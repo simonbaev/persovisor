@@ -1,0 +1,28 @@
+{
+  "name": "persovisor",
+  "version": "1.0.0",
+  "description": "Personal Decision Making Advisor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonbaev/personavisor.git"
+  },
+  "keywords": [
+    "Personal",
+    "advisor",
+    "Decision",
+    "making"
+  ],
+  "author": "Simon Baev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonbaev/personavisor/issues"
+  },
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "bootstrap-slider": "~5.2.5"
+  }
+}
