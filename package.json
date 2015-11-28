@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/simonbaev/personavisor.git"
+    "url": "https://github.com/simonbaev/persovisor.git"
   },
   "keywords": [
     "Personal",
@@ -19,10 +19,11 @@
   "author": "Simon Baev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/simonbaev/personavisor/issues"
+    "url": "https://github.com/simonbaev/persovisor/issues"
   },
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "bootstrap-slider": "~5.2.5"
+    "bootstrap-slider": "~5.2.5",
+    "jquery": "^2.1.4"
   }
 }
