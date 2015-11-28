@@ -1,0 +1,28 @@
+.pager li > a,
+.pager li > span {
+	border: none;
+	border-radius: 0;
+	font-size: 30px;
+}
+
+#wrap {
+	min-height: 100%;
+}
+
+#main {
+	overflow: auto;
+}
+
+footer {
+	position: relative;
+	margin-top: -80px;
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+body,
+html {
+	height: 100%;
+}

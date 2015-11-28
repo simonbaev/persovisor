@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Personalized Decision Making Advisor</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/user.css">
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="assets/js/script.js"></script>
+</head>
+
+<body>
+	<!-- Modals -->
+	<div class="modal fade" id="mdAbout" tabindex="-1" role="dialog" aria-labelledby="lbAbout">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="lbAbout">About PersoVisor</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<h3>A fast and easy way to make the right decision</h3>
+							<p class="text-justify">
+								<strong>Perso</strong>nal decision making ad<strong>Visor</strong> is a compact web application designed to help you to choose among a number of most favorable options. It takes into account psychological patterns that are identified on the basis of input provided by a user. 
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 text-center">
+							<img class="img-circle img-responsive img-center" src="assets/img/sb_200.jpg">
+							<br>
+							<address>
+								<strong>Simon Baev</strong>
+								<br>
+								Design &amp; Programming
+								<br>
+								<a href="mailto:#">Simon.Baev@gsw.edu</a>
+							</address>
+						</div>
+						<div class="col-sm-6 text-center">
+							<img class="img-circle img-responsive img-center" src="assets/img/ay_200.jpg">
+							<br>
+							<address>
+								<strong>Alexander Yemelyanov</strong>
+								<br>
+								Idea &amp; Model
+								<br>
+								<a href="mailto:#">Alexander.Yemelyanov@gsw.edu</a>
+							</address>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Main part -->
+	<div id="wrap">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand navbar-link">PersoVisor</a>
+					<div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</div>
+				</div>
+				<div class="collapse navbar-collapse" id="navcol-2">
+					<ul class="nav navbar-nav navbar-right pull-right">
+						<li role="presentation">
+							<a>Example</a>
+						</li>
+						<li role="presentation">
+							<a data-toggle="modal" href="#mdAbout">About</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid" id="main">
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active">
+					<a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Introduction</a>
+				</li>
+				<li role="presentation">
+					<a href="#setup" aria-controls="setup" role="tab" data-toggle="tab">Personalization</a>
+				</li>
+				<li role="presentation">
+					<a href="#play" aria-controls="play" role="tab" data-toggle="tab">Play</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="intro">
+					<h2>How does it work?</h2>
+					<p>Bla-Bla-Bla</p>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="setup">
+					<h2>Personalization</h2>
+					<p>Specify list of criteria that describe manifold of your options</p>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="play">
+					<h2>Sliders</h2>
+					<p>Drag each slider to balance positive / negative outcomes of each criterium and their likelihoods</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<nav>
+			<ul class="pager">
+				<li class="previous">
+					<a href="#">«</a>
+				</li>
+				<li class="next">
+					<a href="#">»</a>
+				</li>
+			</ul>
+		</nav>
+	</footer>	
+</body>
+
+</html>
