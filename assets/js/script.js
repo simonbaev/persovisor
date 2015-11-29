@@ -1,3 +1,4 @@
+
 function removeContainer(container) {
 	container.remove();
 	$('#setup > div.container-fluid').slice(1,-1).each(function(index){

@@ -25,6 +25,6 @@
     "bootbox": "^4.4.0",
     "bootstrap": "~3.3.5",
     "bootstrap-slider": "~5.2.5",
-    "jquery": "^2.1.4"
+    "jquery": "1.x"
   }
 }
