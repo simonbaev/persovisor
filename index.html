@@ -2,125 +2,147 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 	<title>Personalized Decision Making Advisor</title>
-	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/user.css">
-	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="assets/js/jquery.mobile.custom.min.js"></script>
-	<script src="assets/js/script.js"></script>
+	<link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='assets/css/user.css'>
+	<script src='node_modules/jquery/dist/jquery.min.js'></script>
+	<script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+	<script src='node_modules/bootbox/bootbox.min.js'></script>
+	<script src='assets/js/jquery.mobile.custom.min.js'></script>
+	<script src='assets/js/script.js'></script>
 </head>
 
 <body>
 	<!-- Modals -->
-	<div class="modal fade" id="mdAbout" tabindex="-1" role="dialog" aria-labelledby="lbAbout">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="lbAbout">About PersoVisor</h4>
+	<div class='modal fade' id='mdAbout' tabindex='-1' role='dialog' aria-labelledby='lbAbout'>
+		<div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+					<h4 class='modal-title' id='lbAbout'>About PersoVisor</h4>
 				</div>
-				<div class="modal-body">
-					<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-12">
+				<div class='modal-body'>
+					<div class='container-fluid'>
+					<div class='row'>
+						<div class='col-lg-12'>
 							<h3>A fast and easy way to make the right decision</h3>
-							<p class="text-justify">
+							<p class='text-justify'>
 								<strong>Perso</strong>nal decision making ad<strong>Visor</strong> is a compact web application designed to help you to choose among a number of most favorable options. It takes into account psychological patterns that are identified on the basis of input provided by a user. 
 							</p>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-sm-6 col-xs-12 text-center">
-							<img class="img-circle img-responsive img-center" src="assets/img/sb_200.jpg">
+					<div class='row'>
+						<div class='col-sm-6 col-xs-12 text-center'>
+							<img class='img-circle img-responsive img-center' src='assets/img/sb_200a.jpg'>
 							<br>
 							<address>
 								<strong>Simon Baev</strong>
 								<br>
 								Design &amp; Programming
 								<br>
-								<a href="mailto:#">Simon.Baev@gsw.edu</a>
+								<a href='mailto:#'>Simon.Baev@gsw.edu</a>
 							</address>
 						</div>
-						<div class="col-sm-6 col-xs-12 text-center">
-							<img class="img-circle img-responsive img-center" src="assets/img/ay_200.jpg">
+						<div class='col-sm-6 col-xs-12 text-center'>
+							<img class='img-circle img-responsive img-center' src='assets/img/ay_200.jpg'>
 							<br>
 							<address>
 								<strong>Alexander Yemelyanov</strong>
 								<br>
 								Idea &amp; Model
 								<br>
-								<a href="mailto:#">Alexander.Yemelyanov@gsw.edu</a>
+								<a href='mailto:#'>Alexander.Yemelyanov@gsw.edu</a>
 							</address>
 						</div>
 					</div>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<div class='modal-footer'>
+					<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Main part -->
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand navbar-link">PersoVisor</a>
-				<div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+	<nav class='navbar navbar-default'>
+		<div class='container-fluid'>
+			<div class='navbar-header'>
+				<a class='navbar-brand navbar-link'>PersoVisor</a>
+				<div class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navcol-2'>
+					<span class='sr-only'>Toggle navigation</span>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
 				</div>
 			</div>
-			<div class="collapse navbar-collapse" id="navcol-2">
-				<ul class="nav navbar-nav navbar-right pull-right">
-					<li role="presentation">
+			<div class='collapse navbar-collapse" id="navcol-2'>
+				<ul class='nav navbar-nav navbar-right pull-right'>
+					<li role='presentation'>
 						<a>Example</a>
 					</li>
-					<li role="presentation">
-						<a data-toggle="modal" href="#mdAbout">About</a>
+					<li role='presentation'>
+						<a data-toggle='modal' href='#mdAbout'>About</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container-fluid">
-		<ul class="nav nav-tabs">
-			<li role="presentation" class="active">
-				<a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Introduction</a>
+	<div class='container-fluid'>
+		<ul class='nav nav-tabs'>
+			<li role='presentation' class='active'>
+				<a href='#intro' aria-controls='intro' role='tab' data-toggle='tab'>Introduction</a>
 			</li>
-			<li role="presentation">
-				<a href="#setup" aria-controls="setup" role="tab" data-toggle="tab">Personalization</a>
+			<li role='presentation'>
+				<a href='#setup' aria-controls='setup' role='tab' data-toggle='tab'>Personalization</a>
 			</li>
-			<li role="presentation">
-				<a href="#play" aria-controls="play" role="tab" data-toggle="tab">Play</a>
+			<li role='presentation'>
+				<a href='#play' aria-controls='play' role='tab' data-toggle='tab'>Play</a>
 			</li>
 		</ul>
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active" id="intro">
+		<div class='tab-content'>
+			<div role='tabpanel' class='tab-pane fade in active' id='intro'>
 				<h2>How does it work?</h2>
-				<p class="text-justify">
-					On the <a href="#setup">Personalization</a> tab (next one to the right) you will need to specify an arbitrary set of <strong>options</strong> that you are hesitating to choose one from. At that point you will only need to <em>name</em> them, such that later on, on the <a href="#play">Play</a> tab, you will be able to destinct them by name. Tabs can be clicked (tapped), or, in case you are working on a mobile device (phone, tablet, phablet, etc) you can also do a <em>swipe</em> gesture to the left or to the right to appropriately switch the tab.
+				<p class='text-justify'>
+					On the <a href='#setup'>Personalization</a> tab (next one to the right) you will need to specify an arbitrary set of <strong>options</strong> that you are hesitating to choose one from. At that point you will only need to <em>name</em> them, such that later on, on the <a href='#play'>Play</a> tab, you will be able to distinct them by name. Tabs can be clicked (tapped), or, in case you are working on a mobile device (phone, tablet, phablet, etc) you can also do a <em>swipe</em> gesture to the left or to the right to appropriately switch the tab.
 				</p>
-				<p class="text-justify">
-					During the <a href="#play">play</a> phase you will need to think about each option as having its own <strong>pros</strong> and <strong>cons</strong> with corresponding level of <strong>intencity</strong> and <strong>likelihood</strong> to happen.
+				<p class='text-justify'>
+					During the <a href='#play'>play</a> phase you will need to think about each option as having its own <strong>pros</strong> and <strong>cons</strong> with corresponding level of <strong>intensity</strong> and <strong>likelihood</strong> to happen.
 				</p>
-				<p class="text-justify">
-					Each of both metrics, for instance <strong>intencity</strong> and <strong>likelihood</strong>, has to be associated with a <strong>level</strong>, measured from <strong>low</strong> to <strong>high</strong>, that can be set by dragging corresponding <em>slider handle</em>. Value of the metric can be controlled by observing <strong>color</strong> of the slider bar and associated label. 
+				<p class='text-justify'>
+					Each of both metrics, for instance <strong>intensity</strong> and <strong>likelihood</strong>, has to be associated with a <strong>level</strong>, measured from <strong>low</strong> to <strong>high</strong>, that can be set by dragging corresponding <em>slider handle</em>. Value of the metric can be controlled by observing <strong>color</strong> of the slider bar and associated label. 
 				</p>
 
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="setup">
+			<div role='tabpanel' class='tab-pane fade' id='setup'>
 				<h2>Personalization</h2>
-				<p>Specify list of criteria that describe manifold of your options</p>
+				<p class='text-justify'>
+					Please list <em>at least three</em> options that you have in mind but cannot decide which one is better. We need three or more (probably not more than five) options to avoid situations when <em>pros</em> of one option are implicitly linked to <em>cons</em> of another and vice versa.
+				</p>
+				<div class='container-fluid'>
+					<div class='form-group'>
+						<label for='opt_1'>Option 1</label>
+						<input type='text' class='form-control' id='opt_1' placeholder='Name your "Option 1" here'>												
+					</div>
+					<div class='form-group'>
+						<label for='opt_2'>Option 2</label>
+						<input type='text' class='form-control' id='opt_2' placeholder='Name your "Option 2" here'>												
+					</div>
+					<div class='form-group'>
+						<label for='opt_3'>Option 3</label>
+						<input type='text' class='form-control' id='opt_3' placeholder='Name your "Option 3" here'>												
+					</div>
+				</div>
+				<div class='container-fluid'>
+					<div class='pull-right'>
+						<button id='btnAddOptions' class='btn btn-default' type='button'>Add more</button>
+					</div>
+				</div>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="play">
+			<div role='tabpanel' class='tab-pane fade' id='play'>
 				<h2>Sliders</h2>
-				<p>Drag each slider to balance positive / negative outcomes of each criterium and their likelihoods</p>
+				<p>Drag each slider to balance positive / negative outcomes of each criterion and their likelihoods</p>
 			</div>
 		</div>
 	</div>

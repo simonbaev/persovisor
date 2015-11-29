@@ -1,3 +1,6 @@
 .img-center {
 	margin: 0 auto;
 }
+#setup > div.container-fluid:last-of-type {
+	margin : 25px auto;
+}
