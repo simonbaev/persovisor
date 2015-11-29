@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="assets/css/user.css">
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.mobile.custom.min.js"></script>
 	<script src="assets/js/script.js"></script>
 </head>
 
@@ -32,7 +33,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6 text-center">
+						<div class="col-sm-6 col-xs-12 text-center">
 							<img class="img-circle img-responsive img-center" src="assets/img/sb_200.jpg">
 							<br>
 							<address>
@@ -43,7 +44,7 @@
 								<a href="mailto:#">Simon.Baev@gsw.edu</a>
 							</address>
 						</div>
-						<div class="col-sm-6 text-center">
+						<div class="col-sm-6 col-xs-12 text-center">
 							<img class="img-circle img-responsive img-center" src="assets/img/ay_200.jpg">
 							<br>
 							<address>
@@ -64,70 +65,65 @@
 		</div>
 	</div>
 	<!-- Main part -->
-	<div id="wrap">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand navbar-link">PersoVisor</a>
-					<div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</div>
-				</div>
-				<div class="collapse navbar-collapse" id="navcol-2">
-					<ul class="nav navbar-nav navbar-right pull-right">
-						<li role="presentation">
-							<a>Example</a>
-						</li>
-						<li role="presentation">
-							<a data-toggle="modal" href="#mdAbout">About</a>
-						</li>
-					</ul>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand navbar-link">PersoVisor</a>
+				<div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</div>
 			</div>
-		</nav>
-		<div class="container-fluid" id="main">
-			<ul class="nav nav-tabs">
-				<li role="presentation" class="active">
-					<a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Introduction</a>
-				</li>
-				<li role="presentation">
-					<a href="#setup" aria-controls="setup" role="tab" data-toggle="tab">Personalization</a>
-				</li>
-				<li role="presentation">
-					<a href="#play" aria-controls="play" role="tab" data-toggle="tab">Play</a>
-				</li>
-			</ul>
-			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active" id="intro">
-					<h2>How does it work?</h2>
-					<p>Bla-Bla-Bla</p>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="setup">
-					<h2>Personalization</h2>
-					<p>Specify list of criteria that describe manifold of your options</p>
-				</div>
-				<div role="tabpanel" class="tab-pane" id="play">
-					<h2>Sliders</h2>
-					<p>Drag each slider to balance positive / negative outcomes of each criterium and their likelihoods</p>
-				</div>
+			<div class="collapse navbar-collapse" id="navcol-2">
+				<ul class="nav navbar-nav navbar-right pull-right">
+					<li role="presentation">
+						<a>Example</a>
+					</li>
+					<li role="presentation">
+						<a data-toggle="modal" href="#mdAbout">About</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active">
+				<a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Introduction</a>
+			</li>
+			<li role="presentation">
+				<a href="#setup" aria-controls="setup" role="tab" data-toggle="tab">Personalization</a>
+			</li>
+			<li role="presentation">
+				<a href="#play" aria-controls="play" role="tab" data-toggle="tab">Play</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="intro">
+				<h2>How does it work?</h2>
+				<p class="text-justify">
+					On the <a href="#setup">Personalization</a> tab (next one to the right) you will need to specify an arbitrary set of <strong>options</strong> that you are hesitating to choose one from. At that point you will only need to <em>name</em> them, such that later on, on the <a href="#play">Play</a> tab, you will be able to destinct them by name. Tabs can be clicked (tapped), or, in case you are working on a mobile device (phone, tablet, phablet, etc) you can also do a <em>swipe</em> gesture to the left or to the right to appropriately switch the tab.
+				</p>
+				<p class="text-justify">
+					During the <a href="#play">play</a> phase you will need to think about each option as having its own <strong>pros</strong> and <strong>cons</strong> with corresponding level of <strong>intencity</strong> and <strong>likelihood</strong> to happen.
+				</p>
+				<p class="text-justify">
+					Each of both metrics, for instance <strong>intencity</strong> and <strong>likelihood</strong>, has to be associated with a <strong>level</strong>, measured from <strong>low</strong> to <strong>high</strong>, that can be set by dragging corresponding <em>slider handle</em>. Value of the metric can be controlled by observing <strong>color</strong> of the slider bar and associated label. 
+				</p>
+
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="setup">
+				<h2>Personalization</h2>
+				<p>Specify list of criteria that describe manifold of your options</p>
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="play">
+				<h2>Sliders</h2>
+				<p>Drag each slider to balance positive / negative outcomes of each criterium and their likelihoods</p>
 			</div>
 		</div>
 	</div>
-	<footer>
-		<nav>
-			<ul class="pager">
-				<li class="previous">
-					<a href="#">«</a>
-				</li>
-				<li class="next">
-					<a href="#">»</a>
-				</li>
-			</ul>
-		</nav>
-	</footer>	
 </body>
 
 </html>
