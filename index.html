@@ -6,10 +6,12 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 	<title>Express Decision</title>
 	<link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css'>
 	<link rel='stylesheet' href='assets/css/user.css'>
 	<script src='node_modules/jquery/dist/jquery.min.js'></script>
 	<script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
 	<script src='node_modules/bootbox/bootbox.min.js'></script>
+	<script src='node_modules/bootstrap-slider/dist/bootstrap-slider.min.js'></script>
 	<script src='assets/js/jquery.mobile.custom.min.js'></script>
 	<script src='assets/js/script.js'></script>
 </head>
@@ -141,7 +143,119 @@
 			</div>
 			<div role='tabpanel' class='tab-pane fade' id='play'>
 				<h2>Sliders</h2>
-				<p>Drag each slider to balance positive / negative outcomes of each criterion and their likelihoods</p>
+				<p>
+					Drag each slider to balance positive / negative outcomes of each criterion and their likelihoods
+				</p>
+				<fieldset id='fs_opt_1' class='bg-warning'>
+					<legend>Option 1</legend>
+					<div class='row vcenter'>
+						<div class='col-xs-2 col-sm-1'>
+							<p class='text-center lb-type' >
+								<strong>Pros<br>(+)</strong>
+							</p>
+						</div>
+						<div class='col-xs-10 col-sm-11'>
+							<div class='row vbottom'>
+								<div class='col-xs-4 col-sm-2 col-md-1'>
+									<strong>Intensity</strong>
+								</div>
+								<div class='col-xs-8 col-sm-10 col-md-11'>
+									<div class='row vcenter'>
+										<div class='col-xs-6 text-left'>
+											<strong>weak</strong>
+										</div>
+										<div class='col-xs-6 text-right'>
+											<strong>strong</strong>
+										</div>
+									</div>
+									<div class='row'>
+										<div class='col-xs-12'>
+											<input type='text' id='opt1_PI'/>									
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class='row colorbar bg-green'>
+								<div class='col-xs-12'>
+								</div>
+							</div>
+							<div class='row vtop'>
+								<div class='col-xs-4 col-sm-2 col-md-1'>
+									<strong>Likelihood</strong>
+								</div>
+								<div class='col-xs-8 col-sm-10 col-md-11'>
+									<div class='row'>
+										<div class='col-xs-12'>
+											<input type='text' id='opt1_PL'/>									
+										</div>
+									</div>
+									<div class='row vcenter'>
+										<div class='col-xs-6 text-left'>
+											<strong>seldom</strong>
+										</div>
+										<div class='col-xs-6 text-right'>
+											<strong>often</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+					<hr>
+					<div class='row vcenter'>
+						<div class='col-xs-2 col-sm-1'>
+							<p class='text-center lb-type' >
+								<strong>Cons<br>(-)</strong>
+							</p>
+						</div>
+						<div class='col-xs-10 col-sm-11'>
+							<div class='row vbottom'>
+								<div class='col-xs-4 col-sm-2 col-md-1'>
+									<strong>Intensity</strong>
+								</div>
+								<div class='col-xs-8 col-sm-10 col-md-11'>
+									<div class='row vcenter'>
+										<div class='col-xs-6 text-left'>
+											<strong>weak</strong>
+										</div>
+										<div class='col-xs-6 text-right'>
+											<strong>strong</strong>
+										</div>
+									</div>
+									<div class='row'>
+										<div class='col-xs-12'>
+											<input type='text' id='opt1_CI'/>									
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class='row colorbar bg-red'>
+								<div class='col-xs-12'>
+								</div>
+							</div>
+							<div class='row vtop'>
+								<div class='col-xs-4 col-sm-2 col-md-1'>
+									<strong>Likelihood</strong>
+								</div>
+								<div class='col-xs-8 col-sm-10 col-md-11'>
+									<div class='row'>
+										<div class='col-xs-12'>
+											<input type='text' id='opt1_CL'/>									
+										</div>
+									</div>
+									<div class='row vcenter'>
+										<div class='col-xs-6 text-left'>
+											<strong>seldom</strong>
+										</div>
+										<div class='col-xs-6 text-right'>
+											<strong>often</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</fieldset>
 			</div>
 		</div>
 	</div>

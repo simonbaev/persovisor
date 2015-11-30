@@ -2,5 +2,55 @@
 	margin: 0 auto;
 }
 #setup > div.container-fluid:last-of-type {
-	margin : 25px auto;
+	margin: 25px auto;
+}
+fieldset {
+	border: 1px solid black;
+	padding: 10px;	
+}
+fieldset legend {
+	width: auto;	
+	padding: 0 10px;
+	border: 1px solid black;
+	border-radius: 2px;
+	margin-bottom:  0px;
+	background-color: white;
+}
+fieldset hr {
+	border-color: black;
+}
+.vcenter {
+	display: flex;
+	align-items: center;
+}
+.vbottom {
+	display: flex;
+	align-items: flex-end;
+}
+.vtop {
+	display: flex;
+	align-items: flex-start;
+}
+p.lb-type {
+	font-size: 1.2em;
+}
+.colorbar {
+	margin: 10px 0px;
+	height: 5px; 		
+}
+.bg-green {
+	background-color: green;
+}
+.bg-red {
+	background-color: red;
+}
+.slider-track {
+}
+.slider-handle {
+	background: black;
+}
+.slider {
+	width: 96% !important;
+	margin-left: 2% !important;
+	margin-right: 2% !important;
 }
