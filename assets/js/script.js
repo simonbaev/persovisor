@@ -7,7 +7,12 @@ function sliderChangeHandler(v) {
 	var value = typeof v.value !== 'undefined' ? v.value.newValue : 0;
 	var target = '#' + v.target.id + '_S .slider-handle';
 	var color = 'rgb(' + v2c(value,R) + ',' + v2c(value,G) + ',' + v2c(value,B) + ')';
+	//console.log($('#' + v.target.id).getAttribute('max'));
 	$(target).css('background',color);
+}
+function optionChangeHandler(e) {
+	var index = e.target.id.split('_')[1];
+	$('#fs_' + e.target.id).find('legend').text(e.target.value !== '' ? e.target.value : 'Option ' + index);
 }
 
 function getOptionMarkup(index) {
@@ -81,7 +86,8 @@ function getOptionMarkup(index) {
 								$('<input>')
 								.attr({
 									'type' : 'text',
-									'id' : 'opt' + index + '_PI'
+									'id' : 'opt' + index + '_PI',
+									'data-slider-id' : 'opt' + index + '_PI_S'
 								})								
 							)
 						)
@@ -112,6 +118,22 @@ function getOptionMarkup(index) {
 					.addClass('col-xs-8 col-sm-10 col-md-11')
 					.append(
 						$('<div>')
+						.addClass('row')
+						.append(
+							$('<div>')
+							.addClass('col-xs-12')
+							.append(
+								$('<input>')
+								.attr({
+									'type' : 'text',
+									'id' : 'opt' + index + '_PL',
+									'data-slider-id' : 'opt' + index + '_PL_S'
+								})
+							)
+						)
+					)
+					.append(
+						$('<div>')
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
@@ -130,24 +152,12 @@ function getOptionMarkup(index) {
 							)
 						)
 					)
-					.append(
-						$('<div>')
-						.addClass('row')
-						.append(
-							$('<div>')
-							.addClass('col-xs-12')
-							.append(
-								$('<input>')
-								.attr({
-									'type' : 'text',
-									'id' : 'opt' + index + '_PL'
-								})
-							)
-						)
-					)
 				)
 			)
 		)
+	)
+	.append(
+		$('<hr>')
 	)
 	.append(
 		$('<div>')
@@ -211,7 +221,8 @@ function getOptionMarkup(index) {
 								$('<input>')
 								.attr({
 									'type' : 'text',
-									'id' : 'opt' + index + '_CI'
+									'id' : 'opt' + index + '_CI',
+									'data-slider-id' : 'opt' + index + '_CI_S'
 								})
 							)
 						)
@@ -242,6 +253,22 @@ function getOptionMarkup(index) {
 					.addClass('col-xs-8 col-sm-10 col-md-11')
 					.append(
 						$('<div>')
+						.addClass('row')
+						.append(
+							$('<div>')
+							.addClass('col-xs-12')
+							.append(
+								$('<input>')
+								.attr({
+									'type' : 'text',
+									'id' : 'opt' + index + '_CL',
+									'data-slider-id' : 'opt' + index + '_CL_S'
+								})
+							)
+						)
+					)
+					.append(
+						$('<div>')
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
@@ -260,69 +287,20 @@ function getOptionMarkup(index) {
 							)
 						)
 					)
-					.append(
-						$('<div>')
-						.addClass('row')
-						.append(
-							$('<div>')
-							.addClass('col-xs-12')
-							.append(
-								$('<input>')
-								.attr({
-									'type' : 'text',
-									'id' : 'opt' + index + '_CL'
-								})
-							)
-						)
-					)
 				)
 			)
 		)
 	)
-	//-- Pros Intensity
-	result
-	.find('#opt' + index + '_PI')
-	.slider({
-		id: 'opt' + index + '_PI_S', 
+	var defaultSliderObject = {
 		min: 0, 
 		max: 100, 
 		value: 0, 
 		tooltip: 'hide' 
-	})
-	.on('change', sliderChangeHandler)
-	//-- Pros Likelihood
-	result
-	.find('#opt' + index + '_PL')
-	.slider({
-		id: 'opt' + index + '_PL_S', 
-		min: 0, 
-		max: 100, 
-		value: 0, 
-		tooltip: 'hide' 
-	})
-	.on('change', sliderChangeHandler)
-	//-- Cons Intensity
-	result
-	.find('#opt' + index + '_CI')
-	.slider({
-		id: 'opt' + index + '_CI_S', 
-		min: 0, 
-		max: 100, 
-		value: 0, 
-		tooltip: 'hide' 
-	})
-	.on('change', sliderChangeHandler)
-	//-- Cons Likelihood
-	result
-	.find('#opt' + index + '_CL')
-	.slider({
-		id: 'opt' + index + '_CL_S', 
-		min: 0, 
-		max: 100, 
-		value: 0, 
-		tooltip: 'hide' 
-	})
-	.on('change', sliderChangeHandler)
+	}
+	result.find('#opt' + index + '_PI').slider(defaultSliderObject).on('change', sliderChangeHandler)
+	result.find('#opt' + index + '_PL').slider(defaultSliderObject).on('change', sliderChangeHandler)
+	result.find('#opt' + index + '_CI').slider(defaultSliderObject).on('change', sliderChangeHandler)
+	result.find('#opt' + index + '_CL').slider(defaultSliderObject).on('change', sliderChangeHandler)
 	return result;
 }
 function addButtonHandler() {
@@ -371,9 +349,9 @@ function addButtonHandler() {
 						.attr('type','button')
 						.text('Remove')
 						.click(function(){
-							var container = $(this).parentsUntil('div.container-fluid').parent();
+							var optionContainer = $(this).parentsUntil('div.container-fluid').parent();
 							if(localStorage.getItem('confirmedRemove') === 'true') {
-								removeContainer(container);
+								removeOption(optionContainer);
 							}
 							else {
 								bootbox.confirm({
@@ -383,7 +361,7 @@ function addButtonHandler() {
     								callback : function(result) {
     									if(result) {
     										localStorage.setItem('confirmedRemove', true);
-    										removeContainer(container);
+    										removeOption(optionContainer);
 										}
 										else {
 											localStorage.setItem('confirmedRemove', false);
@@ -395,24 +373,32 @@ function addButtonHandler() {
 					)
 				)
 			)
+			.find('input').on('change',optionChangeHandler)
+			.end()
 		)
 	)
+	$('#play').append(getOptionMarkup(index));
 	$(window).scrollTop($(document).height() - $(window).height());
 }
-function removeContainer(container) {
+function removeOption(container) {
 	container.remove();
+	$('#play').find('fieldset').remove();
 	$('#setup > div.container-fluid').slice(0,-1).each(function(index){
+		//-- Add corresponding option fieldset on the Play tab
+		$('#play').append(getOptionMarkup(index + 1));
+		//-- Name through existing options
 		$(this)
 		.find('label')
-		.attr('for','opt_' + (1 + index))
-		.text('Option ' + (1 + index))
+		.attr('for','opt_' + (index + 1))
+		.text('Option ' + (index + 1))
 		.end()
 		.find('input')
 		.attr({
-			'id' : 'opt_' + (1 + index),
-			'placeholder' : 'Name your "Option ' + (1 + index) + '" here'			
+			'id' : 'opt_' + (index + 1),
+			'placeholder' : 'Name your "Option ' + (index + 1) + '" here'			
 		})
-	})	
+		.trigger('change')
+	})		
 }
 $(document).ready(function(){
 	// Initialization
@@ -443,10 +429,6 @@ $(document).ready(function(){
 	.trigger('click')
 	.trigger('click')
 	// "Play" tab initialization
-	$('#play')
-	.append(getOptionMarkup(1))
-	.append(getOptionMarkup(2))
-	.append(getOptionMarkup(3))
-	.find('input').trigger('change');
+	$('#play').find('input').trigger('change');
 
 })
