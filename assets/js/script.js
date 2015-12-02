@@ -47,7 +47,6 @@ function sliderChangeHandler(v) {
 	$('fieldset').each(function(index){
 		costs[index] = $(this).data('value');
 	});
-
 	var maxCost = Math.max.apply(null,costs);
 	var winCounter = 0;
 	for(k in costs) {
