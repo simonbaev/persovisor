@@ -6,12 +6,15 @@ function colorInterp(low,high,percent) {
 	return result;
 }
 function sliderChangeHandler(v) {
+	//-- Common part
 	var value = typeof v.value !== 'undefined' ? v.value.newValue : 0;
+	var index, i, j, k;
+	//-- SliderHandle colorizing	
 	var colorMap = [[0,153,255],[153,153,153],[255,80,80]];
 	var breakPoints = [0,50,100];
 	var colorValue = colorMap[0];
-	for (var index in breakPoints) {
-		var i = parseInt(index);
+	for (index in breakPoints) {
+		i = parseInt(index);
 		if((i+1) in breakPoints) {
 			if(value >= breakPoints[i] && value <= breakPoints[i+1]) {
 				colorValue = colorInterp(colorMap[i], colorMap[i+1], (value - breakPoints[i]) * 100 / (breakPoints[i+1] - breakPoints[i]));
@@ -21,6 +24,44 @@ function sliderChangeHandler(v) {
 	}
 	var target = '#' + v.target.id + '_S .slider-handle';
 	$(target).css('background', 'rgb(' + colorValue.join(',') + ')');
+	//-- Score evaluation
+	var levelPoints = [0, 12, 25, 40, 57, 71, 85, 100];
+	var idPrefix = v.target.id.slice(0,-2);
+	var idSuffix = ['PI','PL','CI','CL'];
+	level = [];
+	for(j in idSuffix) {
+		var id = idPrefix + idSuffix[j];
+		var val = parseInt($('#' + id).val());
+		for (index in levelPoints) {
+			i = parseInt(index);
+			if(((i+1) in levelPoints) && (val >= levelPoints[i]) && (val <= levelPoints[i+1])) {
+				level[j] = i;
+				break;	
+			}
+		}
+	}
+	//-- Nomination of the Winner
+	$('fieldset legend').removeClass('winner');
+	$('#fs_opt_' + parseInt(v.target.id.slice(3,-3))).data('value',getBigValue(getSmallValue(level[0],level[1]),getSmallValue(level[2],level[3])));
+	var costs = [];
+	$('fieldset').each(function(index){
+		costs[index] = $(this).data('value');
+	});
+
+	var maxCost = Math.max.apply(null,costs);
+	var winCounter = 0;
+	for(k in costs) {
+		if(costs[k] == maxCost) {
+			$('fieldset:eq('  + k +') legend').addClass('winner');
+			winCounter++;	
+		}
+	}
+	if(winCounter === costs.length) {
+		$('fieldset legend').removeClass('winner');
+	}
+
+	
+	
 }
 function optionChangeHandler(e) {
 	var index = e.target.id.split('_')[1];
