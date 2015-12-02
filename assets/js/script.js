@@ -1,14 +1,26 @@
-function v2c(value, color, limit) {
-	limit = typeof limit !== 'undefined' ? limit : [0,100];
-	return color[0] + Math.round((value - limit[0]) * (color[1] - color[0]) / (limit[1] - limit[0]));	
+function colorInterp(low,high,percent) {
+	var result = low;
+	for (var i in result) {
+		result[i] += Math.round((high[i] - low[i]) * percent / 100);
+	}
+	return result;
 }
 function sliderChangeHandler(v) {
-	var R = [0x00, 0x99], G = [0x00, 0x00], B = [0x99, 0x00];
 	var value = typeof v.value !== 'undefined' ? v.value.newValue : 0;
+	var colorMap = [[0,153,255],[153,153,153],[255,80,80]];
+	var breakPoints = [0,50,100];
+	var colorValue = colorMap[0];
+	for (var index in breakPoints) {
+		var i = parseInt(index);
+		if((i+1) in breakPoints) {
+			if(value >= breakPoints[i] && value <= breakPoints[i+1]) {
+				colorValue = colorInterp(colorMap[i], colorMap[i+1], (value - breakPoints[i]) * 100 / (breakPoints[i+1] - breakPoints[i]));
+				break;
+			}
+		}
+	}
 	var target = '#' + v.target.id + '_S .slider-handle';
-	var color = 'rgb(' + v2c(value,R) + ',' + v2c(value,G) + ',' + v2c(value,B) + ')';
-	//console.log($('#' + v.target.id).getAttribute('max'));
-	$(target).css('background',color);
+	$(target).css('background', 'rgb(' + colorValue.join(',') + ')');
 }
 function optionChangeHandler(e) {
 	var index = e.target.id.split('_')[1];
@@ -61,7 +73,7 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-left')
+							.addClass('col-xs-5 col-xs-offset-1 text-left')
 							.append(
 								$('<strong>')
 								.text('weak')
@@ -69,7 +81,7 @@ function getOptionMarkup(index) {
 						)
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-right')
+							.addClass('col-xs-5 text-right')
 							.append(
 								$('<strong>')
 								.text('strong')
@@ -137,7 +149,7 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-left')
+							.addClass('col-xs-5 col-xs-offset-1 text-left')
 							.append(
 								$('<strong>')
 								.text('seldom')
@@ -145,7 +157,7 @@ function getOptionMarkup(index) {
 						)
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-right')
+							.addClass('col-xs-5 text-right')
 							.append(
 								$('<strong>')
 								.text('often')
@@ -196,7 +208,7 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-left')
+							.addClass('col-xs-5 col-xs-offset-1 text-left')
 							.append(
 								$('<strong>')
 								.text('weak')
@@ -204,7 +216,7 @@ function getOptionMarkup(index) {
 						)
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-right')
+							.addClass('col-xs-5 text-right')
 							.append(
 								$('<strong>')
 								.text('strong')
@@ -272,7 +284,7 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-left')
+							.addClass('col-xs-5 col-xs-offset-1 text-left')
 							.append(
 								$('<strong>')
 								.text('seldom')
@@ -280,7 +292,7 @@ function getOptionMarkup(index) {
 						)
 						.append(
 							$('<div>')
-							.addClass('col-xs-6 text-right')
+							.addClass('col-xs-5 text-right')
 							.append(
 								$('<strong>')
 								.text('often')
@@ -290,17 +302,17 @@ function getOptionMarkup(index) {
 				)
 			)
 		)
-	)
+	);
 	var defaultSliderObject = {
 		min: 0, 
 		max: 100, 
 		value: 0, 
 		tooltip: 'hide' 
-	}
-	result.find('#opt' + index + '_PI').slider(defaultSliderObject).on('change', sliderChangeHandler)
-	result.find('#opt' + index + '_PL').slider(defaultSliderObject).on('change', sliderChangeHandler)
-	result.find('#opt' + index + '_CI').slider(defaultSliderObject).on('change', sliderChangeHandler)
-	result.find('#opt' + index + '_CL').slider(defaultSliderObject).on('change', sliderChangeHandler)
+	};	
+	result.find('#opt' + index + '_PI').slider(defaultSliderObject).on('change', sliderChangeHandler);
+	result.find('#opt' + index + '_PL').slider(defaultSliderObject).on('change', sliderChangeHandler);
+	result.find('#opt' + index + '_CI').slider(defaultSliderObject).on('change', sliderChangeHandler);
+	result.find('#opt' + index + '_CL').slider(defaultSliderObject).on('change', sliderChangeHandler);
 	return result;
 }
 function addButtonHandler() {
@@ -319,8 +331,7 @@ function addButtonHandler() {
 				.text('Option ' + index)
 			)
 			.append(
-				index <= 3
-				?
+				index <= 3 ? 
 				$('<input>')
 				.addClass('form-control')
 				.attr({
@@ -367,7 +378,7 @@ function addButtonHandler() {
 											localStorage.setItem('confirmedRemove', false);
 										}
 									}
-								})
+								});
 							}
 						})
 					)
@@ -376,7 +387,7 @@ function addButtonHandler() {
 			.find('input').on('change',optionChangeHandler)
 			.end()
 		)
-	)
+	);
 	$('#play').append(getOptionMarkup(index));
 	$(window).scrollTop($(document).height() - $(window).height());
 }
@@ -397,21 +408,19 @@ function removeOption(container) {
 			'id' : 'opt_' + (index + 1),
 			'placeholder' : 'Name your "Option ' + (index + 1) + '" here'			
 		})
-		.trigger('change')
-	})		
+		.trigger('change');
+	});
 }
 $(document).ready(function(){
 	// Initialization
-	console.log("Welcome!")
+	console.log("Welcome!");
 	localStorage.setItem('confirmedRemove', false);	
 	// Swipe handlers
 	$('.tab-pane:lt(2)').swiperight(function() {
 		$('.nav-tabs > .active').prev('li').find('a').trigger('click');
-		console.log("right")
 	});
 	$('.tab-pane:lt(2)').swipeleft(function() {
 		$('.nav-tabs > .active').next('li').find('a').trigger('click');
-		console.log("left")
 	});	
 	// Triggers for "Intro" tab links
 	$('#intro a[href=#setup]').click(function(){
@@ -427,8 +436,8 @@ $(document).ready(function(){
 	.click(addButtonHandler)
 	.trigger('click')
 	.trigger('click')
-	.trigger('click')
+	.trigger('click');
 	// "Play" tab initialization
 	$('#play').find('input').trigger('change');
 
-})
+});
