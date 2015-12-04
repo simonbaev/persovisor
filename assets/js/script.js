@@ -45,26 +45,40 @@ function sliderChangeHandler(v) {
 	$('#fs_opt_' + parseInt(v.target.id.slice(3,-3))).data('value',getBigValue(getSmallValue(level[0],level[1]),getSmallValue(level[2],level[3])));
 	var costs = [];
 	$('fieldset').each(function(index){
-		costs[index] = $(this).data('value');
+		//costs[index] = $(this).data('value');
+		costs.push({'value': parseInt($(this).data('value')),'index':index});
 	});
-	var maxCost = Math.max.apply(null,costs);
+	costs.sort(function(a,b){
+		return b.value - a.value;
+	});
+	maxCost = costs[0].value;
 	var winCounter = 0;
+	var rank = 1;
 	for(k in costs) {
-		if(costs[k] == maxCost) {
-			$('fieldset:eq('  + k +') legend').addClass('winner');
-			winCounter++;	
+		if(costs[k].value == maxCost) {
+			if(rank == 1) {
+				$('fieldset:eq('  + costs[k].index +') legend').addClass('winner');
+				winCounter++;	
+			}
 		}
+		else {
+			maxCost = costs[k].value;
+			rank++;
+		}
+		$('fieldset:eq('  + costs[k].index +') legend span.badge').text(rank);
+		$('fieldset:eq('  + costs[k].index +') legend span.vbar').show();
 	}
 	if(winCounter === costs.length) {
 		$('fieldset legend').removeClass('winner');
-	}
+		$('fieldset legend span.badge').empty();
+		$('fieldset legend span.vbar').hide();
 
-	
-	
+	}	
+	$('#play').data('costs',costs);
 }
 function optionChangeHandler(e) {
 	var index = e.target.id.split('_')[1];
-	$('#fs_' + e.target.id).find('legend').text(e.target.value !== '' ? e.target.value : 'Option ' + index);
+	$('#fs_' + e.target.id).find('legend span:eq(0)').text(e.target.value !== '' ? e.target.value : 'Option ' + index);
 }
 
 function getOptionMarkup(index) {
@@ -74,7 +88,19 @@ function getOptionMarkup(index) {
 	.addClass('bg-warning')
 	.append(
 		$('<legend>')
-		.text($('#opt_' + index).val() === '' ? 'Option ' + index : $('#opt_' + index).val())
+		.append(
+			$('<span>')
+			.text($('#opt_' + index).val() === '' ? 'Option ' + index : $('#opt_' + index).val())
+		)
+		.append(
+			$('<span>')
+			.addClass('vbar')
+			.hide()
+		)
+		.append(
+			$('<span>')
+			.addClass('badge')
+		)
 	)
 	.append(
 	 	$('<div>')

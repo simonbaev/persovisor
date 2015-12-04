@@ -37,6 +37,11 @@ fieldset legend.winner {
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
 }
+fieldset legend span.vbar {
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid black;
+}
 fieldset hr {
 	border-color: black;
 }
