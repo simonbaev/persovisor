@@ -26,23 +26,84 @@
 				</div>
 				<div class='modal-body'>
 					<div class='container-fluid'>
-						<h4>The Problem</h3>
+						<h3>The Problem</h3>
+						<p class='text-justify'>
+							Mr. John Doe has to attend a meeting in New York at 3:00 PM tomorrow. He lives in Boston and decides to take a <em>non-stop</em> flight from Logan International Airport (Boston) that is scheduled to depart at 7:00&nbsp;AM. This flight is expected to arrive to LaGuardia Airport (New York) at 8:20&nbsp;AM.
+						</p>
+						<p class='text-justify'>	
+							Upon arrival to the airport, Mr. Doe finds out that his flight is <em>delayed</em> due to weather conditions in New York City. He needs to make an adjustment to his plans and the following are his options:
+							<ol> 
+								<li>
+									<strong>Option 1.</strong> Cancel the flight and reschedule the meeting for another day ("Cancel").
+								</li>
+								<li>
+									<strong>Option 2.</strong> Wait until the weather in New York City will get better and the flight will be rescheduled to depart no later than by noon ("Wait").
+								</li>
+								<li>
+									<strong>Option 3.</strong> Drive a rental car from Boston to New York. It should take approximately four hours without traffic ("Drive").
+								</li>
+							</ol>
+						</p>
+						<h3>Metrics </h3>
+						<p class='text-justify'>
+							Each of these options is associated with its own <strong>pros(+)</strong> and <strong>cons(-)</strong> which have their corresponding <strong>intensity</strong> (I) and a <strong>likelihood</strong> (L) to happen.							
+							<ol> 
+								<li>
+									<u><strong>Option 1</strong> ("Cancel")</u>:
+									<ul class='list-unstyled'>
+										<li>
+											<strong class='pros'>Pros(+)</strong>: Mr Doe would consider this as a good chance to prepare for the meeting and attend it later (<var>I</var>=4, <var>L</var>=7).
+										</li>
+										<li>
+											<strong class='cons'>Cons(-)</strong>: This option could delay resolution of urgent problems that are planned to be discussed on the meeting (<var>I</var>=5, <var>L</var>=6).
+										</li>
+									</ul>
+									<br>
+								</li>
+								<li>
+									<u><strong>Option 2</strong> ("Wait")</u>:
+									<ul class='list-unstyled'>
+										<li>
+											<strong class='pros'>Pros(+)</strong>: bla-bla-bla (<var>I</var>=4, <var>L</var>=7).
+										</li>
+										<li>
+											<strong class='cons'>Cons(-)</strong>: bla-bla-bla (<var>I</var>=5, <var>L</var>=6).
+										</li>
+									</ul>
+									<br>
+								</li>
+								<li>
+									<u><strong>Option 3</strong> ("Drive")</u>:
+									<ul class='list-unstyled'>
+										<li>
+											<strong class='pros'>Pros(+)</strong>: bla-bla-bla (<var>I</var>=4, <var>L</var>=7).
+										</li>
+										<li>
+											<strong class='cons'>Cons(-)</strong>: bla-bla-bla (<var>I</var>=5, <var>L</var>=6).
+										</li>
+									</ul>
+								</li>
+							</ol>
+						</p>
+
+<!-- 
+2. “Wait”: 
+Pros (+): The trip is nevertheless very important because I am waiting for valuable results from the meeting (C=6, L=5).
+Cons (-): If I end up waiting for too long, I will be very late for the meeting. Also I hate turbulence.  (C=5. L=5).
+3. “Drive”:
+Pros (+): I won’t be late for the meeting. I like driving my car more than flying and I won’t have to rent a car in NY (C=6, L=6).
+Cons (-): Even though it’s only a 3.5 hour-drive to NY, there might be a lot of traffic due to heavy flight cancelation. In addition, because of this weather, driving conditions could be dangerous. And I know that a friend of mine get into an accident in similar conditions (C=7. L=2).
+ -->
+
+						<h3>Result</h3>
 						<p>Paragraph</p>
-						<h4>Metrics </h3>
-						<p>Paragraph</p>
-						<h4>Result</h3>
-						<p>Paragraph</p>
-						<h4>Demo (video)</h3>
-						<div>
-							<video id='video' controls preload='auto'>
+						<h3>Demo (video)</h3>
+						<div class="embed-responsive embed-responsive-16by9">
+							<video id='video' class='embed-responsive-item' controls preload='auto'>
 								<source src='assets/video/demo.webm' type='video/webm'>
-								<source src='assets/video/demo.mp4' type='video/mp4'>							
+								<source src='assets/video/demo.mp4' type='video/mp4'>
+								<!-- <source src='https://qnap.gswcm.net/share.cgi?ssid=0heA9wo&fid=0heA9wo&ep=&open=normal' type='video/mp4'>	-->
 								<p class="bg-danger">Your browser does not support the <code>video</code> element.</p>
-							</video>
-						</div>
-						<div align="center" class="embed-responsive embed-responsive-16by9">
-							<video autoplay loop class="embed-responsive-item">
-								<source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
 							</video>
 						</div>
 					</div>
@@ -172,6 +233,16 @@
 					<!-- Drag the sliders to set <strong>intensity</strong> and <strong>likelihood</strong> of <strong>pros (+)</strong> and <strong>cons (-)</strong> of each option.  -->
 					Drag each slider to balance the <strong>positive</strong>&nbsp;/&nbsp;<strong>negative</strong> outcomes of each option and their likelihoods. Any significant change of sliders positions will trigger re-ranking of all options. As a result, each option will be assigned with a tag, for example <span class='badge'>2</span>, to indicate relative standing of this particular option with respect to others. The winner option will be assigned with the tag of <span class='badge'>1</span> and its title area will be highlighted.
 				</p>
+			</div>
+			<div role='tabpanel' class='tab-pane fade' id='example'>
+				<h3>Demo (video)</h3>
+				<div>
+					<video id='demo' controls preload='auto'>
+						<source src='assets/video/demo.webm' type='video/webm'>
+						<source src='assets/video/demo.mp4' type='video/mp4'>							
+						<p class="bg-danger">Your browser does not support the <code>video</code> element.</p>
+					</video>
+				</div>
 			</div>
 		</div>
 	</div>
