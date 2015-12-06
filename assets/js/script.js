@@ -41,12 +41,11 @@ function sliderChangeHandler(v) {
 		}
 	}
 	//-- Nomination of the Winner
-	$('fieldset legend').removeClass('winner');
+	$('#play fieldset legend').removeClass('winner');
 	$('#fs_opt_' + parseInt(v.target.id.slice(3,-3))).data('value',getBigValue(getSmallValue(level[0],level[1]),getSmallValue(level[2],level[3])));
 	var costs = [];
-	$('fieldset').each(function(index){
-		//costs[index] = $(this).data('value');
-		costs.push({'value': parseInt($(this).data('value')),'index':index});
+	$('#play fieldset').each(function(index){
+		costs[index] = {'value': parseInt($(this).data('value')),'index':index};
 	});
 	costs.sort(function(a,b){
 		return b.value - a.value;
@@ -57,7 +56,7 @@ function sliderChangeHandler(v) {
 	for(k in costs) {
 		if(costs[k].value == maxCost) {
 			if(rank == 1) {
-				$('fieldset:eq('  + costs[k].index +') legend').addClass('winner');
+				$('#play fieldset:eq('  + costs[k].index +') legend').addClass('winner');
 				winCounter++;	
 			}
 		}
@@ -65,13 +64,13 @@ function sliderChangeHandler(v) {
 			maxCost = costs[k].value;
 			rank++;
 		}
-		$('fieldset:eq('  + costs[k].index +') legend span.badge').text(rank);
-		$('fieldset:eq('  + costs[k].index +') legend span.vbar').show();
+		$('#play fieldset:eq('  + costs[k].index +') legend span.badge').text(rank);
+		$('#play fieldset:eq('  + costs[k].index +') legend span.vbar').show();
 	}
 	if(winCounter === costs.length) {
-		$('fieldset legend').removeClass('winner');
-		$('fieldset legend span.badge').empty();
-		$('fieldset legend span.vbar').hide();
+		$('#play fieldset legend').removeClass('winner');
+		$('#play fieldset legend span.badge').empty();
+		$('#play fieldset legend span.vbar').hide();
 
 	}	
 	$('#play').data('costs',costs);
