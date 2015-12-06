@@ -73,11 +73,14 @@ p.lb-type {
 .slider-track {
 	border: 1px solid black;
 }
-/*.slider-handle {
-	background: black;
-}*/
 .slider {
 	width: 96% !important;
 	margin-left: 2% !important;
 	margin-right: 2% !important;
+}
+video {
+	border: 1px solid black;
+	padding: 10px;
+	margin: 0 auto;
+	width: 100%;
 }

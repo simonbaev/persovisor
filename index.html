@@ -16,6 +16,44 @@
 
 <body>
 	<!-- Modals -->
+	<!-- Example -->
+	<div class='modal fade' id='mdExample' tabindex='-1' role='dialog' aria-labelledby='lbExample'>
+		<div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+					<h3 class='modal-title' id='lbExample'><strong>Example</strong>: Business Trip<br><small>from Boston to New York</small></h3>
+				</div>
+				<div class='modal-body'>
+					<div class='container-fluid'>
+						<h4>The Problem</h3>
+						<p>Paragraph</p>
+						<h4>Metrics </h3>
+						<p>Paragraph</p>
+						<h4>Result</h3>
+						<p>Paragraph</p>
+						<h4>Demo (video)</h3>
+						<div>
+							<video id='video' controls preload='auto'>
+								<source src='assets/video/demo.webm' type='video/webm'>
+								<source src='assets/video/demo.mp4' type='video/mp4'>							
+								<p class="bg-danger">Your browser does not support the <code>video</code> element.</p>
+							</video>
+						</div>
+						<div align="center" class="embed-responsive embed-responsive-16by9">
+							<video autoplay loop class="embed-responsive-item">
+								<source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
+							</video>
+						</div>
+					</div>
+				</div>
+				<div class='modal-footer'>
+					<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- About -->
 	<div class='modal fade' id='mdAbout' tabindex='-1' role='dialog' aria-labelledby='lbAbout'>
 		<div class='modal-dialog' role='document'>
 			<div class='modal-content'>
@@ -25,38 +63,41 @@
 				</div>
 				<div class='modal-body'>
 					<div class='container-fluid'>
-					<div class='row'>
-						<div class='col-lg-12'>
-							<h3>A fast and easy way to make the right decision</h3>
+						<h3>Slogan</h3>
+							<p class='text-justify'>
+								A fast and easy way to make the right decision
+							</p>
+						<h3>Description</h3>
 							<p class='text-justify'>
 								<strong>ExpressDecision</strong> is a compact web application designed to help you to choose among a number of most favorable options. It takes into account psychological patterns that are identified on the basis of input provided by a user. 
 							</p>
+						<h3>Project page</h3>
+							<a href='https://github.com/simonbaev/persovisor' target='_blank'>https://github.com/simonbaev/persovisor</a>
+						<h3>Authors</h3>
+						<div class='row'>
+							<div class='col-sm-6 col-xs-12 text-center'>
+								<img class='img-circle img-responsive img-center' src='assets/img/sb_200a.jpg'>
+								<br>
+								<address>
+									<strong>Simon Baev</strong>
+									<br>
+									Design &amp; Programming
+									<br>
+									<a href='mailto:#'>Simon.Baev@gsw.edu</a>
+								</address>
+							</div>
+							<div class='col-sm-6 col-xs-12 text-center'>
+								<img class='img-circle img-responsive img-center' src='assets/img/ay_200.jpg'>
+								<br>
+								<address>
+									<strong>Alexander Yemelyanov</strong>
+									<br>
+									Idea &amp; Model
+									<br>
+									<a href='mailto:#'>Alexander.Yemelyanov@gsw.edu</a>
+								</address>
+							</div>
 						</div>
-					</div>
-					<div class='row'>
-						<div class='col-sm-6 col-xs-12 text-center'>
-							<img class='img-circle img-responsive img-center' src='assets/img/sb_200a.jpg'>
-							<br>
-							<address>
-								<strong>Simon Baev</strong>
-								<br>
-								Design &amp; Programming
-								<br>
-								<a href='mailto:#'>Simon.Baev@gsw.edu</a>
-							</address>
-						</div>
-						<div class='col-sm-6 col-xs-12 text-center'>
-							<img class='img-circle img-responsive img-center' src='assets/img/ay_200.jpg'>
-							<br>
-							<address>
-								<strong>Alexander Yemelyanov</strong>
-								<br>
-								Idea &amp; Model
-								<br>
-								<a href='mailto:#'>Alexander.Yemelyanov@gsw.edu</a>
-							</address>
-						</div>
-					</div>
 					</div>
 				</div>
 				<div class='modal-footer'>
@@ -80,7 +121,7 @@
 			<div class='collapse navbar-collapse' id='navcol-2'>
 				<ul class='nav navbar-nav navbar-right pull-right'>
 					<li role='presentation'>
-						<a>Example</a>
+						<a data-toggle='modal' href='#mdExample'>Example</a>
 					</li>
 					<li role='presentation'>
 						<a data-toggle='modal' href='#mdAbout'>About</a>
