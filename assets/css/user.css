@@ -10,6 +10,9 @@ fieldset {
 	padding: 10px;	
 	margin-bottom: 10px;
 }
+fieldset.mini {
+	font-size: 0.9em;
+}
 fieldset legend {
 	width: auto;	
 	padding: 0 5px;
@@ -17,6 +20,10 @@ fieldset legend {
 	border-radius: 8px;
 	margin-bottom:  0px;
 	background-color: white;
+}
+fieldset.mini legend {
+	font-size: 0.95em;
+	padding: 5px 10px;
 }
 @keyframes winner {
 	0% {
