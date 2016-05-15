@@ -94,3 +94,8 @@ p.lb-type {
 iframe {
 	margin: 0 auto;
 }
+p.text-success.text-center,
+p.text-danger.text-center {
+	margin: 0px;
+	font-weight: bold;
+}

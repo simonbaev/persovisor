@@ -1,3 +1,13 @@
+iLabels = ["extremely weak", "very weak", "weak", "not weak, not strong", "strong", "very strong", "extremely strong"];
+lLabels = ["extremely seldom", "very seldom", "seldom", "not seldom, not often", "often", "very often", "extremely often"];
+var levelPoints = [0, 12, 25, 40, 57, 71, 85, 100];
+var midPoints = levelPoints.slice(0,-1).map(
+	function(val, idx, arr) {
+		return Math.round((val+this[idx])/2);
+	},
+	levelPoints.slice(1)
+);
+
 function colorInterp(low,high,percent) {
 	var result = low;
 	for (var i in result) {
@@ -5,9 +15,12 @@ function colorInterp(low,high,percent) {
 	}
 	return result;
 }
+function sliderStartHandler(v) {
+	//$(this).slider('setAttribute','tooltip','hide').slider('refresh');
+}
 function sliderChangeHandler(v) {
-	//-- Common part
-	var value = typeof v.value !== 'undefined' ? v.value.newValue : 0;
+	//-- Common part	
+	var value = $(this).slider('getValue');
 	var index, i, j, k;
 	//-- SliderHandle colorizing	
 	var colorMap = [[0,153,255],[153,153,153],[255,80,80]];
@@ -22,10 +35,17 @@ function sliderChangeHandler(v) {
 			}
 		}
 	}
+	for (index in levelPoints) {
+		i = parseInt(index);
+		if(((i+1) in levelPoints) && (value >= levelPoints[i]) && (value <= levelPoints[i+1])) {
+			$(this).slider('setValue', midPoints[i]);
+			$('#' + v.target.id + '_val').text(v.target.id.slice(-1) === "I" ? iLabels[i] : lLabels[i]);
+			break;	
+		}
+	}
 	var target = '#' + v.target.id + '_S .slider-handle';
 	$(target).css('background', 'rgb(' + colorValue.join(',') + ')');
 	//-- Score evaluation
-	var levelPoints = [0, 12, 25, 40, 57, 71, 85, 100];
 	var idPrefix = v.target.id.slice(0,-2);
 	var idSuffix = ['PI','PL','CI','CL'];
 	level = [];
@@ -138,18 +158,13 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-5 col-xs-offset-1 text-left')
+							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
-								$('<strong>')
-								.text('weak')
-							)
-						)
-						.append(
-							$('<div>')
-							.addClass('col-xs-5 text-right')
-							.append(
-								$('<strong>')
-								.text('strong')
+								$('<p>')
+								.addClass('text-success text-center')
+								.attr({
+									'id': 'opt' + index + '_PI_val'
+								})
 							)
 						)
 					)
@@ -214,18 +229,13 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-5 col-xs-offset-1 text-left')
+							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
-								$('<strong>')
-								.text('seldom')
-							)
-						)
-						.append(
-							$('<div>')
-							.addClass('col-xs-5 text-right')
-							.append(
-								$('<strong>')
-								.text('often')
+								$('<p>')
+								.addClass('text-success text-center')
+								.attr({
+									'id': 'opt' + index + '_PL_val'
+								})
 							)
 						)
 					)
@@ -273,18 +283,13 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-5 col-xs-offset-1 text-left')
+							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
-								$('<strong>')
-								.text('weak')
-							)
-						)
-						.append(
-							$('<div>')
-							.addClass('col-xs-5 text-right')
-							.append(
-								$('<strong>')
-								.text('strong')
+								$('<p>')
+								.addClass('text-danger text-center')
+								.attr({
+									'id': 'opt' + index + '_CI_val'
+								})
 							)
 						)
 					)
@@ -349,18 +354,13 @@ function getOptionMarkup(index) {
 						.addClass('row vcenter')
 						.append(
 							$('<div>')
-							.addClass('col-xs-5 col-xs-offset-1 text-left')
+							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
-								$('<strong>')
-								.text('seldom')
-							)
-						)
-						.append(
-							$('<div>')
-							.addClass('col-xs-5 text-right')
-							.append(
-								$('<strong>')
-								.text('often')
+								$('<p>')
+								.addClass('text-danger text-center')
+								.attr({
+									'id': 'opt' + index + '_CL_val'
+								})
 							)
 						)
 					)
@@ -368,16 +368,24 @@ function getOptionMarkup(index) {
 			)
 		)
 	);
-	var defaultSliderObject = {
-		min: 0, 
+	var defaultSliderObjectTop = {
+		min: 1, 
 		max: 100, 
-		value: 0, 
-		tooltip: 'hide' 
+		value: midPoints[0], 
+		tooltip: 'hide',
+		tooltip_position: 'top'
 	};	
-	result.find('#opt' + index + '_PI').slider(defaultSliderObject).on('change', sliderChangeHandler);
-	result.find('#opt' + index + '_PL').slider(defaultSliderObject).on('change', sliderChangeHandler);
-	result.find('#opt' + index + '_CI').slider(defaultSliderObject).on('change', sliderChangeHandler);
-	result.find('#opt' + index + '_CL').slider(defaultSliderObject).on('change', sliderChangeHandler);
+	var defaultSliderObjectBottom = {
+		min: 1, 
+		max: 100, 
+		value: midPoints[0], 
+		tooltip: 'hide',
+		tooltip_position: 'bottom'
+	};	
+	result.find('#opt' + index + '_PI').slider(defaultSliderObjectTop).on('slideStop', sliderChangeHandler).on('slideStart',sliderStartHandler);
+	result.find('#opt' + index + '_PL').slider(defaultSliderObjectBottom).on('slideStop', sliderChangeHandler);
+	result.find('#opt' + index + '_CI').slider(defaultSliderObjectTop).on('slideStop', sliderChangeHandler);
+	result.find('#opt' + index + '_CL').slider(defaultSliderObjectBottom).on('slideStop', sliderChangeHandler);
 	return result;
 }
 function addButtonHandler() {
@@ -453,7 +461,12 @@ function addButtonHandler() {
 			.end()
 		)
 	);
-	$('#play').append(getOptionMarkup(index));
+	$('#play').append(getOptionMarkup(index));	
+	//-- Workaround to fix initial positions of tooltips
+	$('#play').find('input').each(function(){
+		$(this).trigger('slideStop');
+	});
+	
 	$(window).scrollTop($(document).height() - $(window).height());
 }
 function removeOption(container) {
@@ -503,6 +516,6 @@ $(document).ready(function(){
 	.trigger('click')
 	.trigger('click');
 	// "Play" tab initialization
-	$('#play').find('input').trigger('change');
+	//$('#play').find('input').trigger('slideStop');
 
 });
