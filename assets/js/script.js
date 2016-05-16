@@ -91,8 +91,13 @@ function sliderChangeHandler(v) {
 		$('#play fieldset legend').removeClass('winner');
 		$('#play fieldset legend span.badge').empty();
 		$('#play fieldset legend span.vbar').hide();
-
+		$('#play').find('p.sliderValue').hide();
+		$('#play').find('p.animation').show();	
 	}	
+	else {
+		$('#play').find('p.sliderValue').show();
+		$('#play').find('p.animation').hide();	
+	}
 	$('#play').data('costs',costs);
 }
 function optionChangeHandler(e) {
@@ -161,10 +166,23 @@ function getOptionMarkup(index) {
 							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
 								$('<p>')
-								.addClass('text-success text-center')
+								.addClass('sliderValue text-success text-center')
 								.attr({
 									'id': 'opt' + index + '_PI_val'
 								})
+							)
+							.append(
+								$('<p>')
+								.addClass('animation text-center')
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
 							)
 						)
 					)
@@ -232,10 +250,23 @@ function getOptionMarkup(index) {
 							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
 								$('<p>')
-								.addClass('text-success text-center')
+								.addClass('sliderValue text-success text-center')
 								.attr({
 									'id': 'opt' + index + '_PL_val'
 								})
+							)
+							.append(
+								$('<p>')
+								.addClass('animation text-center')
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
 							)
 						)
 					)
@@ -286,10 +317,23 @@ function getOptionMarkup(index) {
 							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
 								$('<p>')
-								.addClass('text-danger text-center')
+								.addClass('sliderValue text-danger text-center')
 								.attr({
 									'id': 'opt' + index + '_CI_val'
 								})
+							)
+							.append(
+								$('<p>')
+								.addClass('animation text-center')
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
 							)
 						)
 					)
@@ -357,10 +401,23 @@ function getOptionMarkup(index) {
 							.addClass('col-xs-offset-2 col-xs-8')
 							.append(
 								$('<p>')
-								.addClass('text-danger text-center')
+								.addClass('sliderValue text-danger text-center')
 								.attr({
 									'id': 'opt' + index + '_CL_val'
 								})
+							)
+							.append(
+								$('<p>')
+								.addClass('animation text-center')
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
+								.append(
+									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+								)
 							)
 						)
 					)
@@ -516,6 +573,7 @@ $(document).ready(function(){
 	.trigger('click')
 	.trigger('click');
 	// "Play" tab initialization
-	//$('#play').find('input').trigger('slideStop');
+	
+	$('#play').find('p.sliderValue').hide();
 
 });

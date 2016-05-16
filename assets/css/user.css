@@ -94,8 +94,23 @@ p.lb-type {
 iframe {
 	margin: 0 auto;
 }
-p.text-success.text-center,
-p.text-danger.text-center {
+p.sliderValue {
 	margin: 0px;
 	font-weight: bold;
 }
+@keyframes direction {
+	0% {
+		left: -30%;
+	}
+	100% {
+		left: 30%;
+	}
+}
+p.animation {
+	margin: 0px;
+}
+/*
+p.animation span {
+	animation: direction 3s linear 0s alternate infinite;
+}
+*/
