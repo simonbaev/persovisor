@@ -100,17 +100,19 @@ p.sliderValue {
 }
 @keyframes direction {
 	0% {
-		left: -30%;
+		left: -1%;
+	}
+	10% {
+		left: 1%;
 	}
 	100% {
-		left: 30%;
+		left: -1%;	
 	}
 }
 p.animation {
 	margin: 0px;
 }
-/*
+
 p.animation span {
-	animation: direction 3s linear 0s alternate infinite;
+	animation: direction 5s infinite;
 }
-*/
