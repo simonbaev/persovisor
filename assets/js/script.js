@@ -91,6 +91,14 @@ function sliderChangeHandler(v) {
 		$('#play fieldset legend').removeClass('winner');
 		$('#play fieldset legend span.badge').empty();
 		$('#play fieldset legend span.vbar').hide();
+	}
+	//-- Check if all sliders are in default state
+	//var 
+	$('#play').find('input').each(function(){
+		
+	});
+	
+	if($('#play').find('input').filter(function(){return parseInt(this.value) === midPoints[0]}).length === $('#play').find('input').length) {
 		$('#play').find('p.sliderValue').hide();
 		$('#play').find('p.animation').show();	
 	}	
@@ -175,13 +183,13 @@ function getOptionMarkup(index) {
 								$('<p>')
 								.addClass('animation text-center')
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f1')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f2')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f3')
 								)
 							)
 						)
@@ -259,13 +267,13 @@ function getOptionMarkup(index) {
 								$('<p>')
 								.addClass('animation text-center')
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f1')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f2')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f3')
 								)
 							)
 						)
@@ -326,13 +334,13 @@ function getOptionMarkup(index) {
 								$('<p>')
 								.addClass('animation text-center')
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f1')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f2')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f3')
 								)
 							)
 						)
@@ -410,13 +418,13 @@ function getOptionMarkup(index) {
 								$('<p>')
 								.addClass('animation text-center')
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f1')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f2')
 								)
 								.append(
-									$('<span>').addClass('glyphicon glyphicon-chevron-right')
+									$('<span>').addClass('glyphicon glyphicon-chevron-right f3')
 								)
 							)
 						)
@@ -571,9 +579,5 @@ $(document).ready(function(){
 	.click(addButtonHandler)
 	.trigger('click')
 	.trigger('click')
-	.trigger('click');
-	// "Play" tab initialization
-	
-	$('#play').find('p.sliderValue').hide();
-
+	.trigger('click');	
 });

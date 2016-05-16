@@ -98,7 +98,7 @@ p.sliderValue {
 	margin: 0px;
 	font-weight: bold;
 }
-@keyframes direction {
+@keyframes direction_motion {
 	0% {
 		left: -1%;
 	}
@@ -109,10 +109,42 @@ p.sliderValue {
 		left: -1%;	
 	}
 }
+@keyframes direction_color_f1 {	
+	25% {color: rgb(0, 102, 255);}
+	75% {color: black;}
+}
+@keyframes direction_color_f2 {
+	50% {color: rgb(0, 102, 255);}
+	100% {color: black;}
+}
+@keyframes direction_color_f3 {
+	25% {color: black;}
+	75% {color: rgb(0, 102, 255);}	
+}
+@keyframes direction_color_f4 {
+	50% {color: black;}
+	100% {color: rgb(0, 102, 255);}	
+}
+
 p.animation {
 	margin: 0px;
 }
-
+/*
 p.animation span {
 	animation: direction 5s infinite;
 }
+*/
+p.animation span.f1 {
+	animation: direction_color_f1 3s infinite;
+}
+p.animation span.f2 {
+	animation: direction_color_f2 3s infinite;
+}
+p.animation span.f3 {
+	animation: direction_color_f3 3s infinite;
+}
+p.animation span.f4 {
+	animation: direction_color_f4 3s infinite;
+}
+
+
