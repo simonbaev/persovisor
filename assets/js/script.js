@@ -1,5 +1,6 @@
 iLabels = ["extremely weak", "very weak", "weak", "not weak, not strong", "strong", "very strong", "extremely strong"];
 lLabels = ["extremely seldom", "very seldom", "seldom", "not seldom, not often", "often", "very often", "extremely often"];
+
 var levelPoints = [0, 12, 25, 40, 57, 71, 85, 100];
 var midPoints = levelPoints.slice(0,-1).map(
 	function(val, idx, arr) {
@@ -7,6 +8,26 @@ var midPoints = levelPoints.slice(0,-1).map(
 	},
 	levelPoints.slice(1)
 );
+
+function getSignificanceLabel(significanceLevel) {
+	var levels = {
+		1:  "extremely low",
+		13: "very low",
+		18: "low",
+		24: "middle",
+		31: "high",
+		36: "very high",
+		44: "extremely high"
+	}
+	var thresholds = Object.keys(levels);
+	for(var i=(thresholds.length-1); i>=0; i--) {
+		if(significanceLevel >= thresholds[i]) {
+			return levels[thresholds[i]];
+		}
+	}
+	return levels[thresholds[0]];
+}
+
 
 function colorInterp(low,high,percent) {
 	var result = low;
@@ -19,10 +40,10 @@ function sliderStartHandler(v) {
 	//$(this).slider('setAttribute','tooltip','hide').slider('refresh');
 }
 function sliderChangeHandler(v) {
-	//-- Common part	
+	//-- Common part
 	var value = $(this).slider('getValue');
 	var index, i, j, k;
-	//-- SliderHandle colorizing	
+	//-- SliderHandle colorizing
 	var colorMap = [[0,153,255],[153,153,153],[255,80,80]];
 	var breakPoints = [0,50,100];
 	var colorValue = colorMap[0];
@@ -40,7 +61,7 @@ function sliderChangeHandler(v) {
 		if(((i+1) in levelPoints) && (value >= levelPoints[i]) && (value <= levelPoints[i+1])) {
 			$(this).slider('setValue', midPoints[i]);
 			$('#' + v.target.id + '_val').text(v.target.id.slice(-1) === "I" ? iLabels[i] : lLabels[i]);
-			break;	
+			break;
 		}
 	}
 	var target = '#' + v.target.id + '_S .slider-handle';
@@ -56,7 +77,7 @@ function sliderChangeHandler(v) {
 			i = parseInt(index);
 			if(((i+1) in levelPoints) && (val >= levelPoints[i]) && (val <= levelPoints[i+1])) {
 				level[j] = i;
-				break;	
+				break;
 			}
 		}
 	}
@@ -77,34 +98,36 @@ function sliderChangeHandler(v) {
 		if(costs[k].value == maxCost) {
 			if(rank == 1) {
 				$('#play fieldset:eq('  + costs[k].index +') legend').addClass('winner');
-				winCounter++;	
+				winCounter++;
 			}
 		}
 		else {
 			maxCost = costs[k].value;
 			rank++;
 		}
-		$('#play fieldset:eq('  + costs[k].index +') legend span.badge').text(rank);
+		$('#play fieldset:eq('  + costs[k].index +') legend span.badge.rank').text(rank);
+		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Significance " + (costs[k].value / 58 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value) + ")");
 		$('#play fieldset:eq('  + costs[k].index +') legend span.vbar').show();
 	}
 	if(winCounter === costs.length) {
 		$('#play fieldset legend').removeClass('winner');
 		$('#play fieldset legend span.badge').empty();
+		$('#play fieldset legend span.score').empty();
 		$('#play fieldset legend span.vbar').hide();
 	}
 	//-- Check if all sliders are in default state
-	//var 
+	//var
 	$('#play').find('input').each(function(){
-		
+
 	});
-	
+
 	if($('#play').find('input').filter(function(){return parseInt(this.value) === midPoints[0]}).length === $('#play').find('input').length) {
 		$('#play').find('p.sliderValue').hide();
-		$('#play').find('p.animation').show();	
-	}	
+		$('#play').find('p.animation').show();
+	}
 	else {
 		$('#play').find('p.sliderValue').show();
-		$('#play').find('p.animation').hide();	
+		$('#play').find('p.animation').hide();
 	}
 	$('#play').data('costs',costs);
 }
@@ -114,9 +137,9 @@ function optionChangeHandler(e) {
 }
 
 function getOptionMarkup(index) {
-	var result = 
+	var result =
 	$('<fieldset>')
-	.attr('id','fs_opt_' + index)	
+	.attr('id','fs_opt_' + index)
 	.addClass('bg-warning')
 	.append(
 		$('<legend>')
@@ -131,7 +154,16 @@ function getOptionMarkup(index) {
 		)
 		.append(
 			$('<span>')
-			.addClass('badge')
+			.addClass('badge rank')
+		)
+		.append(
+			$('<span>')
+			.addClass('vbar')
+			.hide()
+		)
+		.append(
+			$('<span>')
+			.addClass('score')
 		)
 	)
 	.append(
@@ -206,7 +238,7 @@ function getOptionMarkup(index) {
 									'type' : 'text',
 									'id' : 'opt' + index + '_PI',
 									'data-slider-id' : 'opt' + index + '_PI_S'
-								})								
+								})
 							)
 						)
 					)
@@ -216,7 +248,7 @@ function getOptionMarkup(index) {
 				$('<div>')
 				.addClass('row colorbar bg-green')
 				.append(
-					$('<div>')	
+					$('<div>')
 					.addClass('col-xs-12')
 				)
 			)
@@ -367,7 +399,7 @@ function getOptionMarkup(index) {
 				$('<div>')
 				.addClass('row colorbar bg-red')
 				.append(
-					$('<div>')	
+					$('<div>')
 					.addClass('col-xs-12')
 				)
 			)
@@ -434,19 +466,19 @@ function getOptionMarkup(index) {
 		)
 	);
 	var defaultSliderObjectTop = {
-		min: 1, 
-		max: 100, 
-		value: midPoints[0], 
+		min: 1,
+		max: 100,
+		value: midPoints[0],
 		tooltip: 'hide',
 		tooltip_position: 'top'
-	};	
+	};
 	var defaultSliderObjectBottom = {
-		min: 1, 
-		max: 100, 
-		value: midPoints[0], 
+		min: 1,
+		max: 100,
+		value: midPoints[0],
 		tooltip: 'hide',
 		tooltip_position: 'bottom'
-	};	
+	};
 	result.find('#opt' + index + '_PI').slider(defaultSliderObjectTop).on('slideStop', sliderChangeHandler).on('slideStart',sliderStartHandler);
 	result.find('#opt' + index + '_PL').slider(defaultSliderObjectBottom).on('slideStop', sliderChangeHandler);
 	result.find('#opt' + index + '_CI').slider(defaultSliderObjectTop).on('slideStop', sliderChangeHandler);
@@ -469,7 +501,7 @@ function addButtonHandler() {
 				.text('Option ' + index)
 			)
 			.append(
-				index <= 3 ? 
+				index <= 3 ?
 				$('<input>')
 				.addClass('form-control')
 				.attr({
@@ -477,7 +509,7 @@ function addButtonHandler() {
 					'id' : 'opt_' + index,
 					'placeholder' : 'Name your "Option ' + index + '" here'
 				})
-				: 
+				:
 				$('<div>')
 				.addClass('input-group')
 				.append(
@@ -506,7 +538,7 @@ function addButtonHandler() {
 								bootbox.confirm({
 									size : 'small',
 									animate : false,
-    								message : 'All data on "Play" tab will be lost. Are you sure?', 
+    								message : 'All data on "Play" tab will be lost. Are you sure?',
     								callback : function(result) {
     									if(result) {
     										localStorage.setItem('confirmedRemove', true);
@@ -526,12 +558,12 @@ function addButtonHandler() {
 			.end()
 		)
 	);
-	$('#play').append(getOptionMarkup(index));	
+	$('#play').append(getOptionMarkup(index));
 	//-- Workaround to fix initial positions of tooltips
 	$('#play').find('input').each(function(){
 		$(this).trigger('slideStop');
 	});
-	
+
 	$(window).scrollTop($(document).height() - $(window).height());
 }
 function removeOption(container) {
@@ -549,7 +581,7 @@ function removeOption(container) {
 		.find('input')
 		.attr({
 			'id' : 'opt_' + (index + 1),
-			'placeholder' : 'Name your "Option ' + (index + 1) + '" here'			
+			'placeholder' : 'Name your "Option ' + (index + 1) + '" here'
 		})
 		.trigger('change');
 	});
@@ -557,21 +589,23 @@ function removeOption(container) {
 $(document).ready(function(){
 	// Initialization
 	console.log("Welcome!");
-	localStorage.setItem('confirmedRemove', false);	
+	localStorage.setItem('confirmedRemove', false);
 	// Swipe handlers
+	/*
 	$('.tab-pane:lt(2)').swiperight(function() {
 		$('.nav-tabs > .active').prev('li').find('a').trigger('click');
 	});
 	$('.tab-pane:lt(2)').swipeleft(function() {
 		$('.nav-tabs > .active').next('li').find('a').trigger('click');
-	});	
+	});
+	*/
 	// Triggers for "Intro" tab links
-	$('#intro a[href=#setup]').click(function(){
-		$('.nav-tabs li a[href=#setup]').trigger('click');
+	$('#intro a[href="#setup"]').click(function(){
+		$('.nav-tabs li a[href="#setup"]').trigger('click');
 		return false;
 	});
-	$('#intro a[href=#play]').click(function(){
-		$('.nav-tabs li a[href=#play]').trigger('click');
+	$('#intro a[href="#play"]').click(function(){
+		$('.nav-tabs li a[href="#play"]').trigger('click');
 		return false;
 	});
 	// "Personalization" tab addOption handler
@@ -579,5 +613,5 @@ $(document).ready(function(){
 	.click(addButtonHandler)
 	.trigger('click')
 	.trigger('click')
-	.trigger('click');	
+	.trigger('click');
 });

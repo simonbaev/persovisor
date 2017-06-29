@@ -1,30 +1,30 @@
 {
-  "name": "persovisor",
-  "version": "1.0.0",
-  "description": "Personal Decision Making Advisor",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/simonbaev/persovisor.git"
-  },
-  "keywords": [
-    "Personal",
-    "advisor",
-    "Decision",
-    "making"
-  ],
-  "author": "Simon Baev",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/simonbaev/persovisor/issues"
-  },
-  "dependencies": {
-    "bootbox": "^4.4.0",
-    "bootstrap": "~3.3.5",
-    "bootstrap-slider": "~5.2.5",
-    "jquery": "1.x"
-  }
+	"name": "persovisor",
+	"version": "1.0.0",
+	"description": "Personal Decision Making Advisor",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/simonbaev/persovisor.git"
+	},
+	"keywords": [
+		"Personal",
+		"advisor",
+		"Decision",
+		"making"
+	],
+	"author": "Simon Baev",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/simonbaev/persovisor/issues"
+	},
+	"dependencies": {
+		"bootbox": "^4.4.0",
+		"bootstrap": "^3.3.7",
+		"bootstrap-slider": "^9.8.0",
+		"jquery": "^3.2.1"
+	}
 }

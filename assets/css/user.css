@@ -7,18 +7,18 @@
 fieldset {
 	border: 2px solid gray;
 	border-radius: 5px;
-	padding: 10px;	
+	padding: 10px;
 	margin-bottom: 10px;
 }
 fieldset.mini {
 	font-size: 0.9em;
 }
 fieldset legend {
-	width: auto;	
+	width: auto;
 	padding: 0 5px;
 	border: 2px solid gray;
 	border-radius: 8px;
-	margin-bottom:  0px;
+	margin-bottom:  0;
 	background-color: white;
 }
 fieldset.mini legend {
@@ -37,7 +37,7 @@ fieldset.mini legend {
 	}
 }
 fieldset legend.winner {
-	border-color: green;		
+	border-color: green;
 	border-width: 2px;
 	background-color: rgb(153, 255, 153);
 	animation-name: winner;
@@ -68,8 +68,8 @@ p.lb-type {
 	font-size: 1.2em;
 }
 .colorbar {
-	margin: 10px 0px;
-	height: 5px; 		
+	margin: 10px 0;
+	height: 5px;
 }
 .bg-green {
 	background-color: green;
@@ -95,7 +95,7 @@ iframe {
 	margin: 0 auto;
 }
 p.sliderValue {
-	margin: 0px;
+	margin: 0;
 	font-weight: bold;
 }
 @keyframes direction_motion {
@@ -106,10 +106,10 @@ p.sliderValue {
 		left: 1%;
 	}
 	100% {
-		left: -1%;	
+		left: -1%;
 	}
 }
-@keyframes direction_color_f1 {	
+@keyframes direction_color_f1 {
 	25% {color: rgb(0, 102, 255);}
 	75% {color: black;}
 }
@@ -119,15 +119,15 @@ p.sliderValue {
 }
 @keyframes direction_color_f3 {
 	25% {color: black;}
-	75% {color: rgb(0, 102, 255);}	
+	75% {color: rgb(0, 102, 255);}
 }
 @keyframes direction_color_f4 {
 	50% {color: black;}
-	100% {color: rgb(0, 102, 255);}	
+	100% {color: rgb(0, 102, 255);}
 }
 
 p.animation {
-	margin: 0px;
+	margin: 0;
 }
 /*
 p.animation span {
@@ -146,5 +146,7 @@ p.animation span.f3 {
 p.animation span.f4 {
 	animation: direction_color_f4 3s infinite;
 }
-
+.badge {
+	margin-bottom: 5px;
+}
 
