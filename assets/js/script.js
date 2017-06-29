@@ -12,12 +12,12 @@ var midPoints = levelPoints.slice(0,-1).map(
 function getSignificanceLabel(significanceLevel) {
 	var levels = {
 		1:  "extremely low",
-		13: "very low",
+		5: "very low",
 		18: "low",
 		24: "middle",
 		31: "high",
 		36: "very high",
-		44: "extremely high"
+		53: "extremely high"
 	}
 	var thresholds = Object.keys(levels);
 	for(var i=(thresholds.length-1); i>=0; i--) {
@@ -106,7 +106,7 @@ function sliderChangeHandler(v) {
 			rank++;
 		}
 		$('#play fieldset:eq('  + costs[k].index +') legend span.badge.rank').text(rank);
-		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Significance " + (costs[k].value / 58 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value) + ")");
+		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Significance " + (costs[k].value / 59 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value) + ")");
 		$('#play fieldset:eq('  + costs[k].index +') legend span.vbar').show();
 	}
 	if(winCounter === costs.length) {
