@@ -36,5 +36,5 @@ function getSmallValue(i,l) {
 		[09,11,12,14,16,18,20],
 		[11,14,15,18,19,20,21]
 	];
-	return data[l][i] - 1;
+	return data[l][i];
 }

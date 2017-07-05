@@ -70,6 +70,29 @@ p.lb-type {
 .colorbar {
 	margin: 10px 0;
 	height: 5px;
+	flex-grow: 1;
+}
+.colorbar-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 7px 0;
+}
+.colorbar-label {
+	padding: 4px;
+	border-radius: 4px;
+	margin-right: 0px;
+	display: flex;
+	align-items: center;
+}
+.colorbar-label-value {
+	margin-left: 3px;
+}
+.border-green {
+	border: 1px solid green;
+}
+.border-red {
+	border: 1px solid red;
 }
 .bg-green {
 	background-color: green;

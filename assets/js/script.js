@@ -9,9 +9,12 @@ var midPoints = levelPoints.slice(0,-1).map(
 	levelPoints.slice(1)
 );
 
-function getSignificanceLabel(significanceLevel) {
-	var levels = {
-		1:  "extremely low",
+function getSignificanceLabel(significanceLevel, isGlobal) {
+	if(typeof isGlobal === 'undefined') {
+		isGlobal = true;
+	};
+	var globalLevels = {
+		1: "extremely low",
 		5: "very low",
 		18: "low",
 		24: "middle",
@@ -19,6 +22,16 @@ function getSignificanceLabel(significanceLevel) {
 		36: "very high",
 		53: "extremely high"
 	}
+	var localLevels = {
+		1: "extremely low",
+		3: "very low",
+		7: "low",
+		9: "middle",
+		14: "high",
+		16: "very high",
+		20: "extremely high"
+	}
+	var levels = isGlobal ? globalLevels : localLevels;
 	var thresholds = Object.keys(levels);
 	for(var i=(thresholds.length-1); i>=0; i--) {
 		if(significanceLevel >= thresholds[i]) {
@@ -83,7 +96,16 @@ function sliderChangeHandler(v) {
 	}
 	//-- Nomination of the Winner
 	$('#play fieldset legend').removeClass('winner');
-	$('#fs_opt_' + parseInt(v.target.id.slice(3,-3))).data('value',getBigValue(getSmallValue(level[0],level[1]),getSmallValue(level[2],level[3])));
+	var prosValue = getSmallValue(level[0],level[1]);
+	var prosLabel = getSignificanceLabel(prosValue, false);
+	var consValue = getSmallValue(level[2],level[3]);
+	var consLabel = getSignificanceLabel(consValue, false);
+	$('#fs_opt_' + parseInt(v.target.id.slice(3,-3)))
+	.data('value',getBigValue(prosValue - 1, consValue - 1))
+	.find('.border-green .colorbar-label-percent').text((prosValue/22*100).toFixed(0) + '%').end()
+	.find('.border-green .colorbar-label-value').text('(' + prosLabel + ')').end()
+	.find('.border-red .colorbar-label-percent').text((consValue/22*100).toFixed(0) + '%').end()
+	.find('.border-red .colorbar-label-value').text('(' + consLabel + ')').end()
 	var costs = [];
 	$('#play fieldset').each(function(index){
 		costs[index] = {'value': parseInt($(this).data('value')),'index':index};
@@ -106,7 +128,7 @@ function sliderChangeHandler(v) {
 			rank++;
 		}
 		$('#play fieldset:eq('  + costs[k].index +') legend span.badge.rank').text(rank);
-		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Significance " + (costs[k].value / 59 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value) + ")");
+		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Significance " + (costs[k].value / 59 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value, true) + ")");
 		$('#play fieldset:eq('  + costs[k].index +') legend span.vbar').show();
 	}
 	if(winCounter === costs.length) {
@@ -246,10 +268,16 @@ function getOptionMarkup(index) {
 			)
 			.append(
 				$('<div>')
-				.addClass('row colorbar bg-green')
+				.addClass('colorbar-container')
 				.append(
 					$('<div>')
-					.addClass('col-xs-12')
+					.addClass('colorbar-label border-green')
+					.append($('<span>').addClass('colorbar-label-percent'))
+					.append($('<span>').addClass('colorbar-label-value'))
+				)
+				.append(
+					$('<div>')
+					.addClass('colorbar bg-green')
 				)
 			)
 			.append(
@@ -397,10 +425,16 @@ function getOptionMarkup(index) {
 			)
 			.append(
 				$('<div>')
-				.addClass('row colorbar bg-red')
+				.addClass('colorbar-container')
 				.append(
 					$('<div>')
-					.addClass('col-xs-12')
+					.addClass('colorbar-label border-red')
+					.append($('<span>').addClass('colorbar-label-percent'))
+					.append($('<span>').addClass('colorbar-label-value'))
+				)
+				.append(
+					$('<div>')
+					.addClass('colorbar bg-red')
 				)
 			)
 			.append(
