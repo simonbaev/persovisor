@@ -136,6 +136,10 @@ function sliderChangeHandler(v) {
 		$('#play fieldset legend span.badge').empty();
 		$('#play fieldset legend span.score').empty();
 		$('#play fieldset legend span.vbar').hide();
+		$('.colorbar-label').hide();
+	}
+	else {
+		$('.colorbar-label').show();
 	}
 	//-- Check if all sliders are in default state
 	//var
