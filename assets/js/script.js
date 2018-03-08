@@ -128,10 +128,10 @@ function sliderChangeHandler(v) {
 			rank++;
 		}
 		$('#play fieldset:eq('  + costs[k].index +') legend span.badge.rank').text(rank);
-		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Significance " + (costs[k].value / 59 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value, true) + ")");
+		$('#play fieldset:eq('  + costs[k].index +') legend span.score').text("Preference " + (costs[k].value / 59 * 100).toFixed(0) + "% (" + getSignificanceLabel(costs[k].value, true) + ")");
 		$('#play fieldset:eq('  + costs[k].index +') legend span.vbar').show();
 	}
-	if(winCounter === costs.length) {
+	if(winCounter === costs.length && (winCounter > 1)) {
 		$('#play fieldset legend').removeClass('winner');
 		$('#play fieldset legend span.badge').empty();
 		$('#play fieldset legend span.score').empty();
@@ -539,7 +539,7 @@ function addButtonHandler() {
 				.text('Option ' + index)
 			)
 			.append(
-				index <= 3 ?
+				index <= 1 ?
 				$('<input>')
 				.addClass('form-control')
 				.attr({
@@ -649,7 +649,7 @@ $(document).ready(function(){
 	// "Personalization" tab addOption handler
 	$('#btnAddOptions')
 	.click(addButtonHandler)
-	.trigger('click')
-	.trigger('click')
+	// .trigger('click')
+	// .trigger('click')
 	.trigger('click');
 });
