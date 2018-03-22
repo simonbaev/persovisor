@@ -2,35 +2,35 @@
 <html>
 
 <head>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta http-equiv="Cache-Control" content="max-age=200" />
 	<meta name="description" content="Express Decision making helper application">
 	<meta name="keywords" content="Express Decision">
 	<meta name="author" content="Simon Baev">
 	<title>ExpressDecision</title>
-	<link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css'>
-	<link rel='stylesheet' href='assets/css/user.css'>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css">
+	<link rel="stylesheet" href="assets/css/user.css">
 </head>
 
 <body>
 	<!-- Modals -->
 	<!-- Example -->
-	<div class='modal fade' id='mdExample' tabindex='-1' role='dialog' aria-labelledby='lbExample'>
-		<div class='modal-dialog' role='document'>
-			<div class='modal-content'>
-				<div class='modal-header'>
-					<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-					<h3 class='modal-title' id='lbExample'><strong>Example</strong>: Business Trip<br><small>from Boston to New York</small></h3>
+	<div class="modal fade" id="mdExample" tabindex="-1" role="dialog" aria-labelledby="lbExample">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h3 class="modal-title" id="lbExample"><strong>Example</strong>: Business Trip<br><small>from Boston to New York</small></h3>
 				</div>
-				<div class='modal-body'>
-					<div class='container-fluid'>
+				<div class="modal-body">
+					<div class="container-fluid">
 						<h3>The Problem</h3>
-						<p class='text-justify'>
+						<p class="text-justify">
 							Mr. John Doe has to attend a meeting in New York at 3:00 PM tomorrow. He lives in Boston and decides to take a <em>non-stop</em> flight from Logan International Airport (Boston) that is scheduled to depart at 7:00&nbsp;AM. This flight is expected to arrive to LaGuardia Airport (New York) at 8:20&nbsp;AM.
 						</p>
-						<p class='text-justify'>
+						<p class="text-justify">
 							Upon arrival to the airport, Mr. Doe finds out that his flight is <em>delayed</em> due to weather conditions in New York City. He needs to make an adjustment to his plans and the following are his options:
 							<ol>
 								<li>
@@ -46,34 +46,34 @@
 						</p>
 
 						<h3>Metrics </h3>
-						<p class='text-justify'>
+						<p class="text-justify">
 							Each of these options is associated with its own <strong>pros (+)</strong> and <strong>cons (-)</strong> which have their corresponding <strong>intensity</strong> (<var>I</var>) and a <strong>likelihood</strong> (<var>L</var>) to happen.	Both metrics (i.e. intensity and likelihood) are measured in levels from 1 (lowest) to 7 (highest).
 						</p>
-						<fieldset class='mini'>
+						<fieldset class="mini">
 							<legend>Cancel</legend>
 							<p>
-								<strong class='pros'>Pros (+)</strong> This option would allow Mr. Doe to better prepare for the meeting and attend it later (<var>I</var>=4, <var>L</var>=7).
+								<strong class="pros">Pros (+)</strong> This option would allow Mr. Doe to better prepare for the meeting and attend it later (<var>I</var>=4, <var>L</var>=7).
 							</p>
 							<p>
-								<strong class='cons'>Cons (-)</strong> This option could delay resolution of a number of urgent problems that are planned for discussion on the meeting (<var>I</var>=5, <var>L</var>=6).
+								<strong class="cons">Cons (-)</strong> This option could delay resolution of a number of urgent problems that are planned for discussion on the meeting (<var>I</var>=5, <var>L</var>=6).
 							</p>
 						</fieldset>
-						<fieldset class='mini'>
+						<fieldset class="mini">
 							<legend>Wait</legend>
 							<p>
-								<strong class='pros'>Pros (+)</strong> Waiting is the easiest solution (<var>I</var>=6, <var>L</var>=5).
+								<strong class="pros">Pros (+)</strong> Waiting is the easiest solution (<var>I</var>=6, <var>L</var>=5).
 							</p>
 							<p>
-								<strong class='cons'>Cons (-)</strong> Waiting too long could cancel other options (<var>I</var>=5, <var>L</var>=5).
+								<strong class="cons">Cons (-)</strong> Waiting too long could cancel other options (<var>I</var>=5, <var>L</var>=5).
 							</p>
 						</fieldset>
-						<fieldset class='mini'>
+						<fieldset class="mini">
 							<legend>Drive</legend>
 							<p>
-								<strong class='pros'>Pros (+)</strong> Driving is a pleasure, no turbulence, no need to rent a car in New York (<var>I</var>=6, <var>L</var>=6).
+								<strong class="pros">Pros (+)</strong> Driving is a pleasure, no turbulence, no need to rent a car in New York (<var>I</var>=6, <var>L</var>=6).
 							</p>
 							<p>
-								<strong class='cons'>Cons (-)</strong> Weather conditions could result in a heavy traffic, so to an increased danger (<var>I</var>=7, <var>L</var>=2).
+								<strong class="cons">Cons (-)</strong> Weather conditions could result in a heavy traffic, so to an increased danger (<var>I</var>=7, <var>L</var>=2).
 							</p>
 						</fieldset>
 
@@ -83,162 +83,208 @@
 						</p>
 						<h3>Demo (video)</h3>
 						<div class="embed-responsive embed-responsive-16by9">
-							<video id='video' class='embed-responsive-item' controls preload='auto'>
-								<source src='assets/video/demo.webm' type='video/webm'>
-								<source src='assets/video/demo.mp4' type='video/mp4'>
+							<video id="video" class="embed-responsive-item" controls preload="auto">
+								<source src="assets/video/demo.webm" type="video/webm">
+								<source src="assets/video/demo.mp4" type="video/mp4">
 								<p class="bg-danger">Your browser does not support the <code>video</code> element.</p>
 							</video>
 						</div>
 					</div>
 				</div>
-				<div class='modal-footer'>
-					<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- About -->
-	<div class='modal fade' id='mdAbout' tabindex='-1' role='dialog' aria-labelledby='lbAbout'>
-		<div class='modal-dialog' role='document'>
-			<div class='modal-content'>
-				<div class='modal-header'>
-					<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-					<h4 class='modal-title' id='lbAbout'>About ExpressDecision</h4>
+	<div class="modal fade" id="mdAbout" tabindex="-1" role="dialog" aria-labelledby="lbAbout">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="lbAbout">About ExpressDecision</h4>
 				</div>
-				<div class='modal-body'>
-					<div class='container-fluid'>
+				<div class="modal-body">
+					<div class="container-fluid">
 						<h3>Slogan</h3>
-							<p class='text-justify'>
+							<p class="text-justify">
 								A fast and easy way to make the right decision
 							</p>
 						<h3>Description</h3>
-							<p class='text-justify'>
+							<p class="text-justify">
 								<strong>ExpressDecision</strong> is a compact web application designed to help you to choose among a number of most favorable options. It takes into account psychological patterns that are identified on the basis of input provided by a user.
 							</p>
 						<h3>Project page</h3>
-							<a href='https://github.com/simonbaev/persovisor' target='_blank'>https://github.com/simonbaev/persovisor</a>
+							<a href="https://github.com/simonbaev/persovisor" target="_blank">https://github.com/simonbaev/persovisor</a>
 						<h3>Authors</h3>
-						<div class='row'>
-							<div class='col-sm-6 col-xs-12 text-center'>
-								<img class='img-circle img-responsive img-center' src='assets/img/sb_200a.jpg'>
+						<div class="row">
+							<div class="col-sm-6 col-xs-12 text-center">
+								<img class="img-circle img-responsive img-center" src="assets/img/sb_200a.jpg">
 								<br>
 								<address>
 									<strong>Simon Baev</strong>
 									<br>
 									Design &amp; Programming
 									<br>
-									<a href='mailto:#'>Simon.Baev@gsw.edu</a>
+									<a href="mailto:#">Simon.Baev@gsw.edu</a>
 								</address>
 							</div>
-							<div class='col-sm-6 col-xs-12 text-center'>
-								<img class='img-circle img-responsive img-center' src='assets/img/ay_200.jpg'>
+							<div class="col-sm-6 col-xs-12 text-center">
+								<img class="img-circle img-responsive img-center" src="assets/img/ay_200.jpg">
 								<br>
 								<address>
 									<strong>Alexander Yemelyanov</strong>
 									<br>
 									Idea &amp; Model
 									<br>
-									<a href='mailto:#'>Alexander.Yemelyanov@gsw.edu</a>
+									<a href="mailto:#">Alexander.Yemelyanov@gsw.edu</a>
 								</address>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class='modal-footer'>
-					<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Main part -->
-	<nav class='navbar navbar-default'>
-		<div class='container-fluid'>
-			<div class='navbar-header'>
-				<a class='navbar-brand navbar-link'>ExpressDecision</a>
-				<div class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navcol-2'>
-					<span class='sr-only'>Toggle navigation</span>
-					<span class='icon-bar'></span>
-					<span class='icon-bar'></span>
-					<span class='icon-bar'></span>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand navbar-link">ExpressDecision</a>
+				<div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</div>
 			</div>
-			<div class='collapse navbar-collapse' id='navcol-2'>
-				<ul class='nav navbar-nav navbar-right pull-right'>
-					<li role='presentation'>
-						<a data-toggle='modal' href='#mdExample'>Example</a>
+			<div class="collapse navbar-collapse" id="navcol-2">
+				<ul class="nav navbar-nav navbar-right pull-right">
+					<li role="presentation">
+						<a data-toggle="modal" href="#mdExample">Example</a>
 					</li>
-					<li role='presentation'>
-						<a data-toggle='modal' href='#mdAbout'>About</a>
+					<li role="presentation">
+						<a data-toggle="modal" href="#mdAbout">About</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class='container-fluid'>
-		<ul class='nav nav-tabs'>
-			<li role='presentation' class='active'>
-				<a href='#intro' aria-controls='intro' role='tab' data-toggle='tab'>Introduction</a>
+	<div class="container-fluid">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active">
+				<a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Introduction</a>
 			</li>
-			<li role='presentation'>
-				<a href='#setup' aria-controls='setup' role='tab' data-toggle='tab'>Personalization</a>
+			<li role="presentation">
+				<a href="#setup" aria-controls="setup" role="tab" data-toggle="tab">Personalization</a>
 			</li>
-			<li role='presentation'>
-				<a href='#play' aria-controls='play' role='tab' data-toggle='tab'>Play</a>
+			<li role="presentation">
+				<a href="#play" aria-controls="play" role="tab" data-toggle="tab">Play</a>
 			</li>
 		</ul>
-		<div class='tab-content'>
-			<div role='tabpanel' class='tab-pane fade in active' id='intro'>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="intro">
+				<h3>Express Decision</h3>
+				<p class="text-justify">
+					Express Decision (ED) was designed with the goal of implementing Performance Evaluation Process (PEP) in order to support the decision-maker (DM) in making individual decisions, in which the alternatives derived from the available set are more preferable in situations of uncertainty. The distinctive feature of PEP is that the decision-maker is not required to formulate criteria for assessing outcomes in advance, as is the case with multi-criteria decision-making theories, and these criteria can be applied even unconsciously within the process of decision-making. When supporting an individual, ED uses only those criteria and sub-criteria that exist in any goal-directed decision-making under uncertainty. These two criteria, categorized into positive and negative outcomes, determine the decision-maker’s existing goal, while two sub-criteria, subjective importance (intensity) and subjective possibility (likelihood), are characterized by the uncertainty of the occurrence of an outcome. In this case, intensity is measured on a fuzzy verbal scale, from <strong>extremely weak</strong> to <strong>extremely strong</strong>, while likelihood is associated with the range of characteristics from <strong>extremely seldom</strong> to <strong>extremely often</strong>.
+				</p>
+				<p>
+					Performance Evaluation Process, supported by ED, allows to
+					<ul>
+						<li>
+							<strong>evaluate</strong> the preference of each of the alternatives;
+						</li>
+						<li>
+							<strong>make a decision</strong> regarding selecting an alternative for execution.
+						</li>
+					</ul>
+				</p>
+				<p class="text-justify">
+					The preference of each alternative is evaluated by measuring the <i>intensity</i> and <i>likelihood</i> of its <i>positive</i> and <i>negative</i> outcomes. ED uses these four characteristics (positive intensity and positive likelihood; negative intensity and negative likelihood) to determine the positive, negative, and global preference scores of the alternatives. If some characteristics of intensity or likelihood are so uncertain that DM cannot measure them, the alternative should be disaggregated with the use of DM into simpler problems for their further evaluation by the same four-characteristic- scheme. When the alternative is disaggregated to such an extent that all sub-problems can be positively evaluated (i.e. their intensities and likelihoods can be determined), the aggregation process can begin. As a result of aggregation, all positive and all negative preference scores of sub-problems will be combined into global positive and global negative preference scores of the alternative correspondingly. Note: the current version of ED does not yet support the aggregation process, so it should be performed manually. 
+				</p>
+				<p class="text-justify">
+					During the decision-making stage, the alternatives are compared and ranked according to their preference scores, and a decision is made regarding selecting an alternative for execution. An alternative with a sufficient level of preference for execution is selected. A low level of preference can occur when the problem is too complicated or not significant enough. The specification of the goal and the addition of new alternatives make it possible to arrive at an acceptable solution. If both alternatives have a sufficiently high level of preference, but their preference levels are equal or very close to each other, then positive and negative preference levels should both be considered.
+				</p>
 				<h3>How does it work?</h3>
-				<p class='text-justify'>
-					In the <a href='#setup'>Personalization</a> tab (next one to the right), you will need to specify an arbitrary set of <strong>options</strong> from which you are hesitating to choose one. In that tab you will only need to <em>name</em> them, so that later on, in the <a href='#play'>Play</a> tab, you will be able to distinguish them by name. Tabs can be clicked (tapped), or if you are working on a mobile device (phone, tablet, phablet, etc) you can also perform a <em>swipe</em> gesture to the left or to the right to switch tabs as necessary.
+				<p class="text-justify">
+					In the <a href="#setup">Personalization</a> tab (next one to the right), you will need to specify an arbitrary set of <strong>options</strong> (alternatives) from which you hesitate to select the best one. In this tab you will only need to <em>name</em> them, so that later, in the <a href="#play">Play</a> tab, you will be able to distinguish them by name. Tabs can be clicked (tapped), or if you are working on a mobile device (phone, tablet, phablet, etc) you can also perform a <em>swipe</em> gesture to the left or to the right to switch tabs as necessary.
 				</p>
-				<p class='text-justify'>
-					During the <a href='#play'>play</a> phase you will need to think about each option as having its own <strong>pros (+)</strong> and <strong>cons (-)</strong>, with a corresponding level of <strong>intensity</strong> and a <strong>likelihood</strong> to happen.
+				<p class="text-justify">
+					During the <a href="#play">play</a> phase you will need to think about each option as having its own <strong>pros (+)</strong> and <strong>cons (-)</strong>, with a corresponding level of <strong>intensity</strong> and a <strong>likelihood</strong> of occurrence.
 				</p>
-				<p class='text-justify'>
-					<em>Intensity</em> would be associated with a level measured from <strong>extremely weak</strong> to <strong>extremely strong</strong>, and <em>likelihood</em> would be associated with some other level measured from <strong>extremely seldom</strong> to <strong>extremely often</strong>. Both levels can be set by dragging corresponding <em>slider handles</em>. The value of each metric can be controlled by observing <strong>color</strong> of the slider handle as well as a <strong>label</strong> displayed on top of the slider. Default value of the label is set to <strong> >>> </strong> to indicate that selection of <strong>intensity</strong> and <strong>likelihood</strong> has yet to be made.
+				<ul>
+					<li>
+						<strong>Intensity</strong> would be associated with a level measured on the scale:<br>
+						<em>{extremely weak, very weak, weak, not-weak-not-strong, strong, very strong, extremely strong}</em>, 
+					</li>
+					<li>
+						<strong>Likelihood</strong> would be associated with some other level measured on the scale <br>
+						<em>{extremely seldom, very seldom, seldom, not-seldom-not-often, often,very often,extremely often}</em> 
+					</li>
+				</ul>	
+				<p class="text-justify">
+					Both levels can be set by dragging corresponding <em>slider handles</em>. The value of each metric can be controlled by observing <strong>color</strong> of the slider handle as well as a <strong>label</strong> displayed on the top of the slider. The default value of the label is set to <strong> >>> </strong> to indicate that selection of <strong>intensity</strong> and <strong>likelihood</strong> has yet to be made.
 				</p>
-				<p class='text-justify'>
-					As soon as the winner is identified, corresponding option on the play tab will be highlighted. In some cases a tide is possible, so two or more (never all) options would be highlighted.
+				<p class="text-justify">
+					As soon as intensity and likelihood are identified by the decision-maker, the positive, negative, and global preference scores will be determined, and the best option will be highlighted.
+				</p>
+				<p class="text-justify">
+					The options with undefined characteristics of intensity or/and likelihood should be divided into sub- problems to such a level of outcomes that it can be positively evaluated and then used to compound the particular level of preference for the alternative. 
 				</p>
 			</div>
-			<div role='tabpanel' class='tab-pane fade' id='setup'>
+			<div role="tabpanel" class="tab-pane fade" id="setup">
 				<h3>What are your options?</h3>
-				<p class='text-justify'>
-					Please list <em>at least three</em> options that you are considering, but with which you are having difficulty to select the best choice. We need three or more (probably no more than five) options to avoid situations in which the <em>pros</em> of one option are implicitly linked to the <em>cons</em> of another and vice versa.
-				</p>
-				<div class='container-fluid'>
-					<div class='pull-right'>
-						<button id='btnAddOptions' class='btn btn-default' type='button'>Add more</button>
+				<ul>
+					<li>
+						If you make a decision regarding the best alternative, provide the name for each of the alternatives that will be evaluated and compared.
+					</li>
+					<li>
+						If you need to evaluate the alternative, you should just provide its name.
+					</li>
+				</ul>
+				<div class="container-fluid">
+					<div class="pull-right">
+						<button id="btnAddOptions" class="btn btn-default" type="button">Add more</button>
 					</div>
 				</div>
 			</div>
-			<div role='tabpanel' class='tab-pane fade' id='play'>
+			<div role="tabpanel" class="tab-pane fade" id="play">
 				<h3>Instructions</h3>
-				<p class='text-justify'>
-					<!-- Drag the sliders to set <strong>intensity</strong> and <strong>likelihood</strong> of <strong>pros (+)</strong> and <strong>cons (-)</strong> of each option.  -->
-					Drag each slider to balance the <strong>positive</strong>&nbsp;/&nbsp;<strong>negative</strong> outcomes of each option and their likelihoods. Any significant change of sliders positions will trigger re-ranking of all options. As a result, each option will be assigned with a tag, for example <span class='badge'>2</span>, to indicate relative standing of this particular option with respect to others. The winner option will be assigned with the tag of <span class='badge'>1</span> and its title area will be highlighted.
-				</p>
+				<ul>
+					<li>
+						If you are comparing several options to make a decision about the best one, you must do the following. Drag each slider to balance the positive and negative outcomes for each option and its likelihoods. Any significant change of the slider’s position will trigger a re-ranking of all options. As a result, each option will be assigned its own level of positive, negative, and global preferences, as well as a tag indicating the relative standing of this particular option with respect to other options. The best option will be assigned the tag of 1, and its title will be highlighted.
+					</li>
+					<li>
+						If you are evaluating only one option, all the aforementioned steps will be performed, except those that call for a comparison of the options.
+					</li>
+				</ul>
+				<!-- <p class="text-justify">
+					Drag each slider to balance the <strong>positive</strong>&nbsp;/&nbsp;<strong>negative</strong> outcomes of each option and their likelihoods. Any significant change of sliders positions will trigger re-ranking of all options. As a result, each option will be assigned with a tag, for example <span class="badge">2</span>, to indicate relative standing of this particular option with respect to others. The winner option will be assigned with the tag of <span class="badge">1</span> and its title area will be highlighted.
+				</p> -->
 			</div>
-			<div role='tabpanel' class='tab-pane fade' id='example'>
+			<div role="tabpanel" class="tab-pane fade" id="example">
 				<h3>Demo (video)</h3>
 				<div>
-					<video id='demo' controls preload='auto'>
-						<source src='assets/video/demo.webm' type='video/webm'>
-						<source src='assets/video/demo.mp4' type='video/mp4'>
+					<video id="demo" controls preload="auto">
+						<source src="assets/video/demo.webm" type="video/webm">
+						<source src="assets/video/demo.mp4" type="video/mp4">
 						<p class="bg-danger">Your browser does not support the <code>video</code> element.</p>
 					</video>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src='node_modules/jquery/dist/jquery.min.js'></script>
-	<script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
-	<script src='node_modules/bootbox/bootbox.min.js'></script>
-	<script src='node_modules/bootstrap-slider/dist/bootstrap-slider.min.js'></script>
-	<!-- <script src='assets/js/jquery.mobile.custom.min.js'></script> -->
-	<script src='assets/js/data.js'></script>
-	<script src='assets/js/script.js'></script>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="node_modules/bootbox/bootbox.min.js"></script>
+	<script src="node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+	<!-- <script src="assets/js/jquery.mobile.custom.min.js"></script> -->
+	<script src="assets/js/data.js"></script>
+	<script src="assets/js/script.js"></script>
 </body>
 
 </html>
